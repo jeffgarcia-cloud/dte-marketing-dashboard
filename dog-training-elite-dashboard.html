@@ -1308,8 +1308,9 @@ svg.icon{display:inline-block;vertical-align:middle}
       <!-- Map -->
       <div class="card" style="padding:0;overflow:hidden">
         <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
-          <div><div class="card-title">LA Metro — Outreach Map</div><div class="card-sub">Click any marker for details · Green = visited · Red = pending</div></div>
-          <div style="display:flex;gap:6px">
+          <div><div class="card-title">LA Metro — Outreach Map</div><div class="card-sub">25 strategic locations across 6 zones · centered on DTE base (90066)</div></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t3)"><div style="width:10px;height:10px;border-radius:50%;background:#C9A96E"></div>DTE Base</div>
             <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t3)"><div style="width:10px;height:10px;border-radius:50%;background:#10B981"></div>Visited</div>
             <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t3)"><div style="width:10px;height:10px;border-radius:50%;background:#EF4444"></div>Pending</div>
             <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t3)"><div style="width:10px;height:10px;border-radius:50%;background:#F59E0B"></div>In Progress</div>
@@ -1556,36 +1557,42 @@ window.addEventListener('load', () => {
 
 // ── OUTREACH MAP ──
 const locations = [
-  // Veterinarias
-  { name:'VCA West LA Animal Hospital', cat:'vet', lat:34.0362, lng:-118.4467, status:'pending', note:'Large clinic, high traffic' },
-  { name:'Westside Veterinary Center', cat:'vet', lat:34.0195, lng:-118.4912, status:'pending', note:'Santa Monica area' },
-  { name:'VCA Sepulveda Animal Hospital', cat:'vet', lat:34.1561, lng:-118.4486, status:'pending', note:'Sherman Oaks' },
-  { name:'Eagle Rock Animal Hospital', cat:'vet', lat:34.1347, lng:-118.2068, status:'pending', note:'NE Los Angeles' },
-  { name:'Pasadena Humane', cat:'vet', lat:34.1558, lng:-118.1319, status:'pending', note:'Adoption events monthly' },
-  { name:'Burbank Animal Hospital', cat:'vet', lat:34.1808, lng:-118.3090, status:'pending', note:'Burbank corridor' },
-  { name:'Long Beach Animal Hospital', cat:'vet', lat:33.7701, lng:-118.1937, status:'pending', note:'South LA territory' },
+  // ── ZONA 1: WEST LA / CULVER CITY (base de operaciones 90066) ──
+  { name:'VCA West LA Animal Hospital', cat:'vet', lat:34.0362, lng:-118.4467, status:'pending', note:'5 min from DTE base · high volume clinic' },
+  { name:'Centinela Feed & Pet Supplies', cat:'store', lat:33.9953, lng:-118.4156, status:'pending', note:'LA institution · 3 locations nearby · perfect for flyers' },
+  { name:'The Pawsh Dog Boutique', cat:'groomer', lat:34.0101, lng:-118.3977, status:'pending', note:'Culver City · premium clientele · high trust referrals' },
+  { name:'Culver City Dog Park', cat:'park', lat:34.0094, lng:-118.3948, status:'pending', note:'Walking distance from DTE base · daily crowds' },
+  { name:'PetSmart Culver City', cat:'store', lat:34.0045, lng:-118.3964, status:'pending', note:'Closest big box store to DTE headquarters' },
 
-  // Pet Stores
-  { name:'Petco West Hollywood', cat:'store', lat:34.0900, lng:-118.3617, status:'pending', note:'High foot traffic' },
-  { name:'Petco Burbank', cat:'store', lat:34.1872, lng:-118.3284, status:'pending', note:'Near DTE service area' },
-  { name:'PetSmart Culver City', cat:'store', lat:34.0045, lng:-118.3964, status:'pending', note:'High volume store' },
-  { name:'PetSmart Pasadena', cat:'store', lat:34.1386, lng:-118.0760, status:'pending', note:'Pasadena territory' },
-  { name:'Hollywood Feed Los Feliz', cat:'store', lat:34.1041, lng:-118.2771, status:'pending', note:'Independent, community focused' },
-  { name:'Centinela Feed & Pet Supplies', cat:'store', lat:33.9953, lng:-118.4156, status:'pending', note:'Local institution, 70+ years in LA' },
+  // ── ZONA 2: SANTA MONICA / VENICE / BRENTWOOD ──
+  { name:'Westside Veterinary Center', cat:'vet', lat:34.0195, lng:-118.4912, status:'pending', note:'Santa Monica · affluent pet owners · strong referral potential' },
+  { name:'Barrington Dog Park', cat:'park', lat:34.0483, lng:-118.4642, status:'pending', note:'Brentwood · high-income area · dogs with behavior issues common' },
+  { name:'Pet Food Express Santa Monica', cat:'store', lat:34.0195, lng:-118.4784, status:'pending', note:'Santa Monica · loyal customer base · community board' },
+  { name:'Chateau Marmutt Grooming', cat:'groomer', lat:34.0259, lng:-118.4956, status:'pending', note:'Venice · trendy clientele · social media savvy owners' },
 
-  // Groomers
-  { name:'The Dog Salon WeHo', cat:'groomer', lat:34.0877, lng:-118.3718, status:'pending', note:'Premium clientele' },
-  { name:'Wag N\' Wash Los Angeles', cat:'groomer', lat:34.0551, lng:-118.2641, status:'pending', note:'Popular chain, great for flyers' },
-  { name:'Groomingdales Sherman Oaks', cat:'groomer', lat:34.1591, lng:-118.4486, status:'pending', note:'Long Beach territory' },
-  { name:'The Pawsh Dog Boutique', cat:'groomer', lat:34.0549, lng:-118.4547, status:'pending', note:'Culver City boutique' },
+  // ── ZONA 3: WEST HOLLYWOOD / SILVER LAKE / LOS FELIZ ──
+  { name:'The Dog Salon WeHo', cat:'groomer', lat:34.0877, lng:-118.3718, status:'pending', note:'WeHo · premium clientele · high referral value' },
+  { name:'Petco West Hollywood', cat:'store', lat:34.0900, lng:-118.3617, status:'pending', note:'High foot traffic · center of DTE service zone' },
+  { name:'Laurel Canyon Dog Park', cat:'park', lat:34.1059, lng:-118.3700, status:'pending', note:'Off-leash · large community · daily regulars' },
+  { name:'Hollywood Feed Los Feliz', cat:'store', lat:34.1041, lng:-118.2771, status:'pending', note:'Independent · community events · loyal regulars' },
+  { name:'Silver Lake Dog Park', cat:'park', lat:34.0875, lng:-118.2716, status:'pending', note:'Millennial owners · dogs with anxiety common · great fit' },
 
-  // Dog Parks
-  { name:'Runyon Canyon Dog Park', cat:'park', lat:34.1053, lng:-118.3388, status:'pending', note:'Most popular dog park in LA' },
-  { name:'Griffith Park Dog Park', cat:'park', lat:34.1319, lng:-118.2921, status:'pending', note:'Large area, morning crowds' },
-  { name:'Laurel Canyon Dog Park', cat:'park', lat:34.1059, lng:-118.3700, status:'pending', note:'Off-leash, high engagement' },
-  { name:'Silver Lake Dog Park', cat:'park', lat:34.0875, lng:-118.2716, status:'pending', note:'Hip neighborhood, young owners' },
-  { name:'Barrington Dog Park', cat:'park', lat:34.0483, lng:-118.4642, status:'pending', note:'Brentwood — premium area' },
-  { name:'Calabasas Dog Park', cat:'park', lat:34.1584, lng:-118.6378, status:'pending', note:'West territory, affluent area' },
+  // ── ZONA 4: SAN FERNANDO VALLEY (Sherman Oaks / Burbank / Glendale) ──
+  { name:'VCA Sepulveda Animal Hospital', cat:'vet', lat:34.1561, lng:-118.4486, status:'pending', note:'Sherman Oaks · one of busiest vets in the Valley' },
+  { name:'Petco Burbank', cat:'store', lat:34.1872, lng:-118.3284, status:'pending', note:'Burbank · DTE serves heavy here · near team trainers' },
+  { name:'Burbank Animal Hospital', cat:'vet', lat:34.1808, lng:-118.3090, status:'pending', note:'High volume · Burbank families · great referral partner' },
+  { name:'Runyon Canyon Dog Park', cat:'park', lat:34.1053, lng:-118.3388, status:'pending', note:'Most visited dog park in LA · massive daily exposure' },
+
+  // ── ZONA 5: PASADENA / EAST LA ──
+  { name:'Pasadena Humane', cat:'vet', lat:34.1558, lng:-118.1319, status:'pending', note:'Adoption events monthly · dogs need training post-adoption' },
+  { name:'PetSmart Pasadena', cat:'store', lat:34.1386, lng:-118.0760, status:'pending', note:'East territory · Pasadena families · consistent traffic' },
+  { name:'Griffith Park Dog Park', cat:'park', lat:34.1319, lng:-118.2921, status:'pending', note:'Large park · multiple dog areas · morning crowds daily' },
+
+  // ── ZONA 6: SOUTH BAY (Manhattan Beach / Torrance / Long Beach) ──
+  { name:'Long Beach Animal Hospital', cat:'vet', lat:33.7701, lng:-118.1937, status:'pending', note:'South territory · Long Beach is a key DTE service city' },
+  { name:'Peninsula Pet Hospital', cat:'vet', lat:33.7936, lng:-118.3912, status:'pending', note:'Manhattan Beach · affluent south bay · premium clients' },
+  { name:'South Bay Grooming', cat:'groomer', lat:33.8358, lng:-118.3406, status:'pending', note:'Torrance · family neighborhood · dogs with obedience issues' },
+  { name:'Polliwog Park Dog Area', cat:'park', lat:33.8869, lng:-118.3706, status:'pending', note:'Manhattan Beach · high-income · frequent users' },
 ];
 
 let mapInstance = null;
@@ -1650,11 +1657,18 @@ function initMap() {
   updateCounts();
   renderList('all');
 
-  mapInstance = L.map('outreach-map', { zoomControl:true, scrollWheelZoom:true }).setView([34.05, -118.35], 11);
+  mapInstance = L.map('outreach-map', { zoomControl:true, scrollWheelZoom:true }).setView([34.02, -118.40], 11);
 
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19
   }).addTo(mapInstance);
+
+  // DTE HQ marker
+  L.marker([34.0020, -118.4270], { icon: L.divIcon({
+    className:'',
+    html:`<div style="width:20px;height:20px;border-radius:50%;background:#C9A96E;border:3px solid rgba(255,255,255,0.9);box-shadow:0 0 12px #C9A96E;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#000">DTE</div>`,
+    iconSize:[20,20], iconAnchor:[10,10], popupAnchor:[0,-12]
+  })}).addTo(mapInstance).bindPopup(`<div style="font-family:Inter,sans-serif"><div style="font-weight:800;font-size:13px;color:#C9A96E">Dog Training Elite LA</div><div style="font-size:11px;color:#888;margin-top:3px">Base of operations · 90066 Mar Vista</div></div>`);
 
   locations.forEach((loc, i) => {
     const marker = L.marker([loc.lat, loc.lng], {icon: makeIcon(loc.status)})
