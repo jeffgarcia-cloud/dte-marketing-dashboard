@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dog Training Elite LA — Marketing Dashboard</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -372,6 +374,10 @@ svg.icon{display:inline-block;vertical-align:middle}
     <div class="nav-item" onclick="showView('email',this)">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       Email Marketing
+    </div>
+    <div class="nav-item" onclick="showView('outreach',this);initMap()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Local Outreach
       <span class="nav-badge nb-green">New</span>
     </div>
   </div>
@@ -1271,6 +1277,122 @@ svg.icon{display:inline-block;vertical-align:middle}
 
   </div><!-- /email -->
 
+  <!-- ══ VIEW: LOCAL OUTREACH ══ -->
+  <div class="view" id="view-outreach">
+    <div class="sec-hd"><div class="sec-hd-label">Local Outreach — LA Territory</div><div class="sec-hd-line"></div></div>
+
+    <!-- Strategy banner -->
+    <div style="margin-bottom:18px;padding:18px 22px;background:linear-gradient(135deg,rgba(16,185,129,.07),rgba(10,132,255,.05));border:1px solid rgba(16,185,129,.2);border-radius:14px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
+      <div style="flex:1;min-width:220px">
+        <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">The strategy</div>
+        <div style="font-size:13px;color:var(--t2);line-height:1.7">Competitors are 100% digital. Showing up physically in the community builds a trust that no algorithm can replicate. The Marketing Manager identifies and maps the right locations, designs the outreach plan, and coordinates the team's execution on the ground.</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap">
+        <div style="text-align:center;padding:12px 14px;background:rgba(16,185,129,.1);border-radius:10px;border:1px solid rgba(16,185,129,.2)">
+          <div style="font-size:22px;font-weight:900;color:var(--green)" id="count-done">0</div>
+          <div style="font-size:10px;color:var(--t3);margin-top:2px">Visited</div>
+        </div>
+        <div style="text-align:center;padding:12px 14px;background:rgba(239,68,68,.08);border-radius:10px;border:1px solid rgba(239,68,68,.2)">
+          <div style="font-size:22px;font-weight:900;color:var(--red)" id="count-pending">0</div>
+          <div style="font-size:10px;color:var(--t3);margin-top:2px">Pending</div>
+        </div>
+        <div style="text-align:center;padding:12px 14px;background:rgba(10,132,255,.08);border-radius:10px;border:1px solid rgba(10,132,255,.2)">
+          <div style="font-size:22px;font-weight:900;color:var(--blue)" id="count-total">0</div>
+          <div style="font-size:10px;color:var(--t3);margin-top:2px">Total mapped</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map + Legend -->
+    <div style="display:grid;grid-template-columns:1fr 280px;gap:14px;margin-bottom:18px">
+      <!-- Map -->
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+          <div><div class="card-title">LA Metro — Outreach Map</div><div class="card-sub">Click any marker for details · Green = visited · Red = pending</div></div>
+          <div style="display:flex;gap:6px">
+            <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t3)"><div style="width:10px;height:10px;border-radius:50%;background:#10B981"></div>Visited</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t3)"><div style="width:10px;height:10px;border-radius:50%;background:#EF4444"></div>Pending</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t3)"><div style="width:10px;height:10px;border-radius:50%;background:#F59E0B"></div>In Progress</div>
+          </div>
+        </div>
+        <div id="outreach-map" style="height:420px;width:100%"></div>
+      </div>
+
+      <!-- Location list -->
+      <div class="card" style="overflow-y:auto;max-height:476px">
+        <div class="card-hd"><div><div class="card-title">Location List</div><div class="card-sub">Filter by category</div></div></div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px">
+          <button onclick="filterLocations('all',this)" style="padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;background:rgba(10,132,255,.15);color:var(--blue);border:1px solid rgba(10,132,255,.3)">All</button>
+          <button onclick="filterLocations('vet',this)" style="padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.05);color:var(--t3);border:1px solid var(--border)">Vets</button>
+          <button onclick="filterLocations('store',this)" style="padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.05);color:var(--t3);border:1px solid var(--border)">Stores</button>
+          <button onclick="filterLocations('groomer',this)" style="padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.05);color:var(--t3);border:1px solid var(--border)">Groomers</button>
+          <button onclick="filterLocations('park',this)" style="padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;background:rgba(255,255,255,.05);color:var(--t3);border:1px solid var(--border)">Parks</button>
+        </div>
+        <div id="location-list" style="display:flex;flex-direction:column;gap:6px"></div>
+      </div>
+    </div>
+
+    <!-- Execution plan -->
+    <div class="sec-hd"><div class="sec-hd-label">Monthly Execution Plan</div><div class="sec-hd-line"></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px">
+      <div class="card">
+        <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">Month 1–2 · Map & Prepare</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:11px;color:var(--t2);line-height:1.5">
+          <div style="display:flex;gap:8px"><span style="color:var(--blue);font-weight:700;flex-shrink:0">→</span>Identify 30+ target locations across LA metro</div>
+          <div style="display:flex;gap:8px"><span style="color:var(--blue);font-weight:700;flex-shrink:0">→</span>Design leave-behind materials (flyers, cards with QR)</div>
+          <div style="display:flex;gap:8px"><span style="color:var(--blue);font-weight:700;flex-shrink:0">→</span>Build referral partner pitch (commission structure)</div>
+          <div style="display:flex;gap:8px"><span style="color:var(--blue);font-weight:700;flex-shrink:0">→</span>Brief the team on talking points and script</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;font-weight:700;color:var(--purple);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">Month 3–6 · Execute & Track</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:11px;color:var(--t2);line-height:1.5">
+          <div style="display:flex;gap:8px"><span style="color:var(--purple);font-weight:700;flex-shrink:0">→</span>Team visits 5–8 locations per week</div>
+          <div style="display:flex;gap:8px"><span style="color:var(--purple);font-weight:700;flex-shrink:0">→</span>Every visit logged here — map updates in real time</div>
+          <div style="display:flex;gap:8px"><span style="color:var(--purple);font-weight:700;flex-shrink:0">→</span>Follow up with interested partners within 48hrs</div>
+          <div style="display:flex;gap:8px"><span style="color:var(--purple);font-weight:700;flex-shrink:0">→</span>First referral partnerships activated by Month 4</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">Month 7–12 · Scale & Optimize</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:11px;color:var(--t2);line-height:1.5">
+          <div style="display:flex;gap:8px"><span style="color:var(--green);font-weight:700;flex-shrink:0">→</span>Double down on top-performing partner categories</div>
+          <div style="display:flex;gap:8px"><span style="color:var(--green);font-weight:700;flex-shrink:0">→</span>Attend 1–2 pet events per month in LA</div>
+          <div style="display:flex;gap:8px"><span style="color:var(--green);font-weight:700;flex-shrink:0">→</span>Pop-up demos at dog parks — team trains live</div>
+          <div style="display:flex;gap:8px"><span style="color:var(--green);font-weight:700;flex-shrink:0">→</span>Goal: 8–12 active referral partners generating leads</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Referral partner model -->
+    <div class="card">
+      <div class="card-hd"><div><div class="card-title">Referral Partner Model</div><div class="card-sub">How the commission structure works — turns local businesses into unpaid sales reps</div></div></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+        <div style="padding:14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;text-align:center">
+          <div style="font-size:22px;font-weight:900;color:var(--blue);margin-bottom:4px">Step 1</div>
+          <div style="font-size:11px;font-weight:600;color:var(--t1);margin-bottom:4px">Partner agrees</div>
+          <div style="font-size:10px;color:var(--t3);line-height:1.5">Vet / groomer / store agrees to recommend DTE to their clients</div>
+        </div>
+        <div style="padding:14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;text-align:center">
+          <div style="font-size:22px;font-weight:900;color:var(--purple);margin-bottom:4px">Step 2</div>
+          <div style="font-size:11px;font-weight:600;color:var(--t1);margin-bottom:4px">Client is referred</div>
+          <div style="font-size:10px;color:var(--t3);line-height:1.5">Their client contacts DTE mentioning the partner's name</div>
+        </div>
+        <div style="padding:14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;text-align:center">
+          <div style="font-size:22px;font-weight:900;color:var(--gold);margin-bottom:4px">Step 3</div>
+          <div style="font-size:11px;font-weight:600;color:var(--t1);margin-bottom:4px">Client books</div>
+          <div style="font-size:10px;color:var(--t3);line-height:1.5">n8n logs the referral source automatically in Notion CRM</div>
+        </div>
+        <div style="padding:14px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:10px;text-align:center">
+          <div style="font-size:22px;font-weight:900;color:var(--green);margin-bottom:4px">Step 4</div>
+          <div style="font-size:11px;font-weight:600;color:var(--t1);margin-bottom:4px">Partner gets paid</div>
+          <div style="font-size:10px;color:var(--t3);line-height:1.5">$25–50 commission per booked client · tracked automatically</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /outreach -->
+
 </main>
 </div>
 
@@ -1431,6 +1553,125 @@ window.addEventListener('load', () => {
   initOverviewChart();
   animateBars();
 });
+
+// ── OUTREACH MAP ──
+const locations = [
+  // Veterinarias
+  { name:'VCA West LA Animal Hospital', cat:'vet', lat:34.0362, lng:-118.4467, status:'pending', note:'Large clinic, high traffic' },
+  { name:'Westside Veterinary Center', cat:'vet', lat:34.0195, lng:-118.4912, status:'pending', note:'Santa Monica area' },
+  { name:'VCA Sepulveda Animal Hospital', cat:'vet', lat:34.1561, lng:-118.4486, status:'pending', note:'Sherman Oaks' },
+  { name:'Eagle Rock Animal Hospital', cat:'vet', lat:34.1347, lng:-118.2068, status:'pending', note:'NE Los Angeles' },
+  { name:'Pasadena Humane', cat:'vet', lat:34.1558, lng:-118.1319, status:'pending', note:'Adoption events monthly' },
+  { name:'Burbank Animal Hospital', cat:'vet', lat:34.1808, lng:-118.3090, status:'pending', note:'Burbank corridor' },
+  { name:'Long Beach Animal Hospital', cat:'vet', lat:33.7701, lng:-118.1937, status:'pending', note:'South LA territory' },
+
+  // Pet Stores
+  { name:'Petco West Hollywood', cat:'store', lat:34.0900, lng:-118.3617, status:'pending', note:'High foot traffic' },
+  { name:'Petco Burbank', cat:'store', lat:34.1872, lng:-118.3284, status:'pending', note:'Near DTE service area' },
+  { name:'PetSmart Culver City', cat:'store', lat:34.0045, lng:-118.3964, status:'pending', note:'High volume store' },
+  { name:'PetSmart Pasadena', cat:'store', lat:34.1386, lng:-118.0760, status:'pending', note:'Pasadena territory' },
+  { name:'Hollywood Feed Los Feliz', cat:'store', lat:34.1041, lng:-118.2771, status:'pending', note:'Independent, community focused' },
+  { name:'Centinela Feed & Pet Supplies', cat:'store', lat:33.9953, lng:-118.4156, status:'pending', note:'Local institution, 70+ years in LA' },
+
+  // Groomers
+  { name:'The Dog Salon WeHo', cat:'groomer', lat:34.0877, lng:-118.3718, status:'pending', note:'Premium clientele' },
+  { name:'Wag N\' Wash Los Angeles', cat:'groomer', lat:34.0551, lng:-118.2641, status:'pending', note:'Popular chain, great for flyers' },
+  { name:'Groomingdales Sherman Oaks', cat:'groomer', lat:34.1591, lng:-118.4486, status:'pending', note:'Long Beach territory' },
+  { name:'The Pawsh Dog Boutique', cat:'groomer', lat:34.0549, lng:-118.4547, status:'pending', note:'Culver City boutique' },
+
+  // Dog Parks
+  { name:'Runyon Canyon Dog Park', cat:'park', lat:34.1053, lng:-118.3388, status:'pending', note:'Most popular dog park in LA' },
+  { name:'Griffith Park Dog Park', cat:'park', lat:34.1319, lng:-118.2921, status:'pending', note:'Large area, morning crowds' },
+  { name:'Laurel Canyon Dog Park', cat:'park', lat:34.1059, lng:-118.3700, status:'pending', note:'Off-leash, high engagement' },
+  { name:'Silver Lake Dog Park', cat:'park', lat:34.0875, lng:-118.2716, status:'pending', note:'Hip neighborhood, young owners' },
+  { name:'Barrington Dog Park', cat:'park', lat:34.0483, lng:-118.4642, status:'pending', note:'Brentwood — premium area' },
+  { name:'Calabasas Dog Park', cat:'park', lat:34.1584, lng:-118.6378, status:'pending', note:'West territory, affluent area' },
+];
+
+let mapInstance = null;
+let mapMarkers = [];
+let activeFilter = 'all';
+
+const catColors = { vet:'#0A84FF', store:'#C9A96E', groomer:'#8B5CF6', park:'#10B981' };
+const statusColors = { visited:'#10B981', pending:'#EF4444', progress:'#F59E0B' };
+
+function makeIcon(status) {
+  const color = statusColors[status];
+  return L.divIcon({
+    className:'',
+    html:`<div style="width:14px;height:14px;border-radius:50%;background:${color};border:2.5px solid rgba(255,255,255,0.8);box-shadow:0 0 6px ${color}88"></div>`,
+    iconSize:[14,14], iconAnchor:[7,7], popupAnchor:[0,-10]
+  });
+}
+
+function updateCounts() {
+  const visited = locations.filter(l=>l.status==='visited').length;
+  const pending = locations.filter(l=>l.status==='pending').length;
+  document.getElementById('count-done').textContent = visited;
+  document.getElementById('count-pending').textContent = pending;
+  document.getElementById('count-total').textContent = locations.length;
+}
+
+function renderList(filter) {
+  const list = document.getElementById('location-list');
+  if(!list) return;
+  const filtered = filter==='all' ? locations : locations.filter(l=>l.cat===filter);
+  list.innerHTML = filtered.map((l,i)=>{
+    const color = statusColors[l.status];
+    const catLabel = {vet:'Vet',store:'Store',groomer:'Groomer',park:'Park'}[l.cat];
+    return `<div onclick="focusLocation(${locations.indexOf(l)})" style="padding:10px 12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:8px;cursor:pointer;transition:all .15s" onmouseover="this.style.background='rgba(255,255,255,.05)'" onmouseout="this.style.background='rgba(255,255,255,.025)'">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">
+        <div style="width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0"></div>
+        <div style="font-size:11px;font-weight:700;color:#F1F5F9;flex:1;line-height:1.3">${l.name}</div>
+        <span style="font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.06);color:#64748B">${catLabel}</span>
+      </div>
+      <div style="font-size:10px;color:#4B5563;padding-left:16px">${l.note}</div>
+    </div>`;
+  }).join('');
+}
+
+function focusLocation(idx) {
+  if(!mapInstance) return;
+  mapInstance.setView([locations[idx].lat, locations[idx].lng], 15, {animate:true});
+  mapMarkers[idx].openPopup();
+}
+
+function filterLocations(cat, btn) {
+  activeFilter = cat;
+  document.querySelectorAll('#view-outreach button').forEach(b=>{
+    b.style.background='rgba(255,255,255,.05)';b.style.color='#4B5563';b.style.borderColor='rgba(255,255,255,.07)';
+  });
+  btn.style.background='rgba(10,132,255,.15)';btn.style.color='#0A84FF';btn.style.borderColor='rgba(10,132,255,.3)';
+  renderList(cat);
+}
+
+function initMap() {
+  if(mapInstance) return;
+  updateCounts();
+  renderList('all');
+
+  mapInstance = L.map('outreach-map', { zoomControl:true, scrollWheelZoom:true }).setView([34.05, -118.35], 11);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19
+  }).addTo(mapInstance);
+
+  locations.forEach((loc, i) => {
+    const marker = L.marker([loc.lat, loc.lng], {icon: makeIcon(loc.status)})
+      .addTo(mapInstance)
+      .bindPopup(`
+        <div style="font-family:Inter,sans-serif;min-width:160px">
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px">${loc.name}</div>
+          <div style="font-size:11px;color:#888;margin-bottom:8px">${loc.note}</div>
+          <div style="display:flex;gap:6px">
+            <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:${statusColors[loc.status]}22;color:${statusColors[loc.status]};font-weight:700;border:1px solid ${statusColors[loc.status]}44">${loc.status.toUpperCase()}</span>
+            <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#ffffff11;color:#888">${{vet:'Veterinary',store:'Pet Store',groomer:'Groomer',park:'Dog Park'}[loc.cat]}</span>
+          </div>
+        </div>
+      `);
+    mapMarkers.push(marker);
+  });
+}
 </script>
 </body>
 </html>
