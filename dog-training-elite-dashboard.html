@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dog Training Elite LA — Marketing Dashboard</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg: #0B0F1A;
+  --bg-card: #111827;
+  --bg-card2: #151E2E;
+  --bg-hover: #1A2540;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --sidebar-w: 230px;
+  --navy: #1A2B4A;
+  --blue: #0A84FF;
+  --cyan: #06B6D4;
+  --gold: #C9A96E;
+  --gold2: #E8C07C;
+  --green: #10B981;
+  --red: #EF4444;
+  --purple: #8B5CF6;
+  --yellow: #F59E0B;
+  --t1: #F1F5F9;
+  --t2: #94A3B8;
+  --t3: #4B5563;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);height:100%;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:3px}
+
+/* ─── LAYOUT ─── */
+.app{display:flex;min-height:100vh}
+
+/* ─── SIDEBAR ─── */
+.sidebar{
+  width:var(--sidebar-w);position:fixed;top:0;left:0;bottom:0;
+  background:#0D1120;border-right:1px solid var(--border);
+  display:flex;flex-direction:column;z-index:200;overflow-y:auto
+}
+
+.sb-logo{padding:20px 16px 16px;border-bottom:1px solid var(--border)}
+.sb-logo-row{display:flex;align-items:center;gap:10px}
+.sb-logo-icon{width:38px;height:38px;flex-shrink:0}
+.sb-logo-text{line-height:1.2}
+.sb-logo-name{font-size:13px;font-weight:800;color:var(--t1)}
+.sb-logo-city{font-size:10px;color:var(--gold);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+
+.sb-section{padding:16px 10px 6px}
+.sb-label{font-size:9px;font-weight:700;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase;padding:0 8px;margin-bottom:4px}
+
+.nav-item{
+  display:flex;align-items:center;gap:10px;padding:9px 10px;
+  border-radius:8px;cursor:pointer;transition:all .18s;
+  font-size:12.5px;font-weight:500;color:var(--t2);margin-bottom:1px
+}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:var(--t1)}
+.nav-item.active{background:rgba(10,132,255,0.12);color:var(--blue);border:1px solid rgba(10,132,255,0.2)}
+.nav-item svg{flex-shrink:0;opacity:.7}
+.nav-item.active svg{opacity:1}
+
+.nav-badge{
+  margin-left:auto;font-size:10px;font-weight:700;
+  padding:2px 7px;border-radius:10px
+}
+.nb-red{background:rgba(239,68,68,0.15);color:var(--red)}
+.nb-gray{background:rgba(255,255,255,0.06);color:var(--t3)}
+.nb-gold{background:rgba(201,169,110,0.15);color:var(--gold)}
+.nb-green{background:rgba(16,185,129,0.15);color:var(--green)}
+
+.sb-footer{margin-top:auto;padding:14px;border-top:1px solid var(--border)}
+.phase-box{background:rgba(10,132,255,0.08);border:1px solid rgba(10,132,255,0.2);border-radius:10px;padding:12px}
+.phase-dot{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--blue);font-weight:700;margin-bottom:5px}
+.phase-pulse{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.phase-title{font-size:13px;font-weight:800;color:var(--t1);margin-bottom:8px}
+.ph-bar-bg{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+.ph-bar-fill{height:100%;width:17%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:2px}
+
+/* ─── MAIN ─── */
+.main{margin-left:var(--sidebar-w);flex:1;display:flex;flex-direction:column}
+
+.topbar{
+  height:58px;background:rgba(11,15,26,0.85);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;
+  justify-content:space-between;padding:0 28px;
+  position:sticky;top:0;z-index:100
+}
+.tb-title{font-size:15px;font-weight:800;color:var(--t1);letter-spacing:-.3px}
+.tb-sub{font-size:11px;color:var(--t3)}
+.tb-right{display:flex;align-items:center;gap:10px}
+
+.live-pill{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);
+  padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;color:var(--green)
+}
+.chip{
+  font-size:11px;color:var(--t2);background:rgba(255,255,255,0.05);
+  padding:5px 12px;border-radius:8px;border:1px solid var(--border)
+}
+
+/* ─── VIEWS ─── */
+.view{display:none;padding:24px 28px 48px;animation:fadeIn .25s ease}
+.view.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── SECTION HEADER ─── */
+.sec-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px;margin-top:6px}
+.sec-hd-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.sec-hd-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(201,169,110,.3),transparent)}
+
+/* ─── CARDS ─── */
+.card{background:var(--bg-card);border-radius:14px;padding:20px 22px;border:1px solid var(--border);transition:border-color .2s}
+.card:hover{border-color:var(--border2)}
+.card-title{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:3px}
+.card-sub{font-size:11px;color:var(--t3);margin-bottom:16px}
+.card-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+
+/* ─── GRIDS ─── */
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.g21{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-bottom:18px}
+.g12{display:grid;grid-template-columns:1fr 1.5fr;gap:14px;margin-bottom:18px}
+
+/* ─── KPI CARDS ─── */
+.kpi{border-radius:14px;padding:20px;border:1px solid var(--border);position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.kpi:hover{transform:translateY(-2px);border-color:var(--border2)}
+.kpi-1{background:linear-gradient(145deg,#091325,#0C1B35)}
+.kpi-2{background:linear-gradient(145deg,#110D20,#180E2C)}
+.kpi-3{background:linear-gradient(145deg,#0A1C16,#0C2018)}
+.kpi-4{background:linear-gradient(145deg,#1A1208,#201508)}
+.kpi-glow{position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;opacity:.45}
+.kpi-1 .kpi-glow{background:radial-gradient(circle,rgba(10,132,255,.35),transparent 70%)}
+.kpi-2 .kpi-glow{background:radial-gradient(circle,rgba(139,92,246,.35),transparent 70%)}
+.kpi-3 .kpi-glow{background:radial-gradient(circle,rgba(16,185,129,.35),transparent 70%)}
+.kpi-4 .kpi-glow{background:radial-gradient(circle,rgba(201,169,110,.35),transparent 70%)}
+.kpi-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.kpi-icon-bg{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.kpi-1 .kpi-icon-bg{background:rgba(10,132,255,.15)}
+.kpi-2 .kpi-icon-bg{background:rgba(139,92,246,.15)}
+.kpi-3 .kpi-icon-bg{background:rgba(16,185,129,.15)}
+.kpi-4 .kpi-icon-bg{background:rgba(201,169,110,.15)}
+.kpi-delta{font-size:10px;font-weight:700;padding:3px 7px;border-radius:6px}
+.delta-red{background:rgba(239,68,68,.12);color:var(--red)}
+.delta-gray{background:rgba(255,255,255,.06);color:var(--t3)}
+.delta-green{background:rgba(16,185,129,.12);color:var(--green)}
+.kpi-val{font-size:30px;font-weight:900;letter-spacing:-1.5px;line-height:1;margin-bottom:4px}
+.kpi-1 .kpi-val{color:var(--blue)}
+.kpi-2 .kpi-val{color:var(--purple)}
+.kpi-3 .kpi-val{color:var(--green)}
+.kpi-4 .kpi-val{color:var(--gold)}
+.kpi-lbl{font-size:11px;color:var(--t2);font-weight:500;margin-bottom:12px}
+.kpi-bar-bg{height:3px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;margin-bottom:5px}
+.kpi-bar{height:100%;border-radius:2px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.kpi-1 .kpi-bar{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi-2 .kpi-bar{background:linear-gradient(90deg,var(--purple),#A78BFA)}
+.kpi-3 .kpi-bar{background:linear-gradient(90deg,var(--green),#34D399)}
+.kpi-4 .kpi-bar{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.kpi-foot{display:flex;justify-content:space-between;font-size:10px;color:var(--t3)}
+
+/* ─── PLATFORM ROWS ─── */
+.plat-list{display:flex;flex-direction:column;gap:9px}
+.plat-row{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 14px;background:rgba(255,255,255,.02);
+  border-radius:10px;border:1px solid var(--border);transition:all .2s;cursor:pointer
+}
+.plat-row:hover{background:rgba(255,255,255,.04);border-color:var(--border2)}
+.plat-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.plat-info{flex:1;min-width:0}
+.plat-name{font-size:12px;font-weight:700;color:var(--t1)}
+.plat-handle{font-size:10px;color:var(--t3)}
+.plat-metrics{display:flex;gap:14px;align-items:center}
+.pm{text-align:right}
+.pm-val{font-size:15px;font-weight:800;color:var(--t1)}
+.pm-lbl{font-size:9px;color:var(--t3);letter-spacing:.3px}
+.status{font-size:10px;font-weight:700;padding:4px 9px;border-radius:20px;white-space:nowrap}
+.s-red{background:rgba(239,68,68,.12);color:var(--red);border:1px solid rgba(239,68,68,.2)}
+.s-yellow{background:rgba(245,158,11,.1);color:var(--yellow);border:1px solid rgba(245,158,11,.2)}
+.s-gray{background:rgba(255,255,255,.05);color:var(--t3);border:1px solid var(--border)}
+.s-green{background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.2)}
+
+/* ─── CONTENT CALENDAR ─── */
+.cal-controls{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.cal-filter-btn{
+  padding:6px 14px;border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;
+  border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--t2);transition:all .18s
+}
+.cal-filter-btn.active{border-color:rgba(10,132,255,.35);background:rgba(10,132,255,.12);color:var(--blue)}
+.cal-filter-btn:hover{background:rgba(255,255,255,.07);color:var(--t1)}
+
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.cal-day{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:10px;padding:12px 8px;transition:all .2s}
+.cal-day:hover{background:rgba(255,255,255,.05);border-color:var(--border2)}
+.cal-day-name{font-size:9px;font-weight:700;color:var(--t3);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;text-align:center}
+.cal-pills{display:flex;flex-direction:column;gap:5px}
+.cal-pill{
+  padding:6px 5px;border-radius:6px;font-size:10px;font-weight:700;
+  letter-spacing:.2px;cursor:pointer;transition:all .15s;text-align:center;
+  display:flex;align-items:center;gap:4px;justify-content:center
+}
+.cal-pill:hover{transform:scale(1.04);filter:brightness(1.15)}
+.p-reel{background:rgba(10,132,255,.15);color:var(--blue);border:1px solid rgba(10,132,255,.25)}
+.p-carousel{background:rgba(201,169,110,.13);color:var(--gold);border:1px solid rgba(201,169,110,.25)}
+.p-stories{background:rgba(139,92,246,.1);color:var(--purple);border:1px solid rgba(139,92,246,.2)}
+.p-tiktok{background:rgba(0,0,0,.3);color:#69C9D0;border:1px solid rgba(105,201,208,.25)}
+.p-yt{background:rgba(239,68,68,.1);color:#FF4444;border:1px solid rgba(239,68,68,.2)}
+
+.cal-content-tag{font-size:9px;color:var(--t3);text-align:center;margin-top:3px;padding:0 2px}
+
+/* ─── MODAL for calendar ─── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg-card2);border:1px solid var(--border2);border-radius:16px;padding:28px;min-width:340px;max-width:480px;width:100%;animation:fadeIn .2s ease}
+.modal-title{font-size:16px;font-weight:800;color:var(--t1);margin-bottom:4px}
+.modal-sub{font-size:12px;color:var(--t3);margin-bottom:20px}
+.modal-field{margin-bottom:14px}
+.modal-label{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:5px}
+.modal-input{
+  width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border2);
+  border-radius:8px;padding:10px 12px;font-size:13px;color:var(--t1);
+  font-family:'Inter',sans-serif;transition:border-color .2s
+}
+.modal-input:focus{outline:none;border-color:var(--blue)}
+textarea.modal-input{resize:vertical;min-height:80px}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
+.btn{padding:9px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s;border:none}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:#0073E6}
+.btn-ghost{background:rgba(255,255,255,.06);color:var(--t2);border:1px solid var(--border)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);color:var(--t1)}
+
+/* ─── PILLARS ─── */
+.pillar-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.pillar-card{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:11px;padding:16px}
+.pillar-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.pillar-name{font-size:12px;font-weight:700;color:var(--t1)}
+.pillar-pct{font-size:18px;font-weight:900}
+.pillar-bar-bg{height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;margin-bottom:7px}
+.pillar-bar-fill{height:100%;border-radius:2px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.pillar-desc{font-size:10px;color:var(--t3);line-height:1.45}
+
+/* ─── TEAM ─── */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.team-card{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:11px;padding:16px;text-align:center;transition:all .2s;cursor:default}
+.team-card:hover{background:rgba(255,255,255,.045);border-color:var(--border2)}
+.team-avatar{width:48px;height:48px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff}
+.team-name{font-size:12px;font-weight:700;color:var(--t1);margin-bottom:2px}
+.team-role{font-size:10px;color:var(--t3)}
+.team-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;margin-top:6px}
+
+/* ─── SERVICES ─── */
+.service-list{display:flex;flex-direction:column;gap:8px}
+.service-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(255,255,255,.025);border-radius:9px;border:1px solid var(--border)}
+.service-name{font-size:12px;font-weight:700;color:var(--t1)}
+.service-desc{font-size:10px;color:var(--t3)}
+.service-badge{font-size:10px;font-weight:700;color:var(--gold);background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.2);padding:3px 8px;border-radius:6px}
+
+/* ─── METRICS TABLE ─── */
+.mtable{width:100%;border-collapse:collapse}
+.mtable th{text-align:left;padding:10px 12px;font-size:9px;font-weight:700;color:var(--t3);letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.mtable td{padding:11px 12px;font-size:12px;border-bottom:1px solid rgba(255,255,255,.03);color:var(--t2)}
+.mtable tr:last-child td{border-bottom:none}
+.mtable tr:hover td{background:rgba(255,255,255,.02)}
+.m-name{font-weight:700;color:var(--t1)}
+.m-bad{font-weight:700;color:var(--red)}
+.m-good{font-weight:700;color:var(--green)}
+.prio{font-size:9px;font-weight:800;padding:3px 7px;border-radius:5px}
+.ph{background:rgba(239,68,68,.12);color:var(--red)}
+.pm2{background:rgba(245,158,11,.1);color:var(--yellow)}
+
+/* ─── CHART CONTAINERS ─── */
+.chart-box{position:relative}
+
+/* ─── BANNER ─── */
+.banner{
+  background:linear-gradient(135deg,#091424 0%,#0D1C38 100%);
+  border:1px solid rgba(10,132,255,.2);border-radius:14px;
+  padding:22px 26px;display:flex;align-items:center;gap:24px;
+  margin-bottom:20px;position:relative;overflow:hidden
+}
+.banner::before{content:'';position:absolute;top:-60px;right:-40px;width:220px;height:220px;background:radial-gradient(circle,rgba(10,132,255,.1),transparent 70%)}
+.banner-text .banner-title{font-size:17px;font-weight:800;color:var(--t1);margin-bottom:5px;letter-spacing:-.4px}
+.banner-text .banner-desc{font-size:12.5px;color:var(--t2);line-height:1.6;max-width:540px}
+.banner-stats{display:flex;gap:0;flex-shrink:0;margin-left:auto}
+.banner-stat{text-align:center;padding:0 20px;border-right:1px solid var(--border)}
+.banner-stat:last-child{border-right:none}
+.bs-val{font-size:26px;font-weight:900;letter-spacing:-1px;line-height:1}
+.bs-lbl{font-size:10px;color:var(--t3);margin-top:3px}
+
+/* ─── PROGRESS BAR ─── */
+.prog-row{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.prog-top{display:flex;justify-content:space-between;font-size:11px}
+.prog-name{font-weight:600;color:var(--t1)}
+.prog-val{color:var(--t2)}
+.prog-bg{height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+
+/* ─── ACTION BUTTONS ─── */
+.action-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 13px;border-radius:8px;font-size:11px;font-weight:600;
+  cursor:pointer;border:1px solid var(--border);background:rgba(255,255,255,.05);
+  color:var(--t2);transition:all .18s
+}
+.action-btn:hover{background:rgba(255,255,255,.09);color:var(--t1);border-color:var(--border2)}
+.action-btn.blue{border-color:rgba(10,132,255,.3);background:rgba(10,132,255,.1);color:var(--blue)}
+.action-btn.blue:hover{background:rgba(10,132,255,.18)}
+.action-btn.gold{border-color:rgba(201,169,110,.3);background:rgba(201,169,110,.1);color:var(--gold)}
+
+/* ─── INLINE ICON FIX ─── */
+svg.icon{display:inline-block;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ══════════ SIDEBAR ══════════ -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-row">
+      <!-- DTE Shield Logo SVG -->
+      <img src="https://images.squarespace-cdn.com/content/v1/67d9ca84d84f806c0c74b759/fbcb5b29-6547-4a89-a8e0-187d68951304/Dog+Training+Elite+Logo_full-Color-TRUE.png.png?format=500w" alt="Dog Training Elite" style="width:140px;height:auto;display:block;object-fit:contain">
+      <div style="font-size:9px;color:var(--gold);font-weight:600;letter-spacing:.6px;text-transform:uppercase;margin-top:5px">Los Angeles, CA</div>
+    </div>
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-label">Main</div>
+    <div class="nav-item active" onclick="showView('overview',this)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Overview
+    </div>
+    <div class="nav-item" onclick="showView('channels',this)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      Channels
+      <span class="nav-badge nb-red">4</span>
+    </div>
+    <div class="nav-item" onclick="showView('content',this)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Content Calendar
+    </div>
+    <div class="nav-item" onclick="showView('analytics',this)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Analytics &amp; Growth
+    </div>
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-label">Business</div>
+    <div class="nav-item" onclick="showView('team',this)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Team
+      <span class="nav-badge nb-gold">7</span>
+    </div>
+    <div class="nav-item" onclick="showView('services',this)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Services
+      <span class="nav-badge nb-gold">6</span>
+    </div>
+    <div class="nav-item" onclick="showView('metrics',this)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      KPI Tracker
+    </div>
+  </div>
+
+  <div class="sb-footer">
+    <div class="phase-box">
+      <div class="phase-dot"><div class="phase-pulse"></div>Phase Active</div>
+      <div class="phase-title">Month 1 of 12 — Foundation</div>
+      <div class="ph-bar-bg"><div class="ph-bar-fill"></div></div>
+    </div>
+  </div>
+</aside>
+
+<!-- ══════════ MAIN ══════════ -->
+<main class="main">
+  <div class="topbar">
+    <div>
+      <div class="tb-title" id="topbar-title">Overview</div>
+      <div class="tb-sub">Dog Training Elite LA · Marketing Dashboard</div>
+    </div>
+    <div class="tb-right">
+      <div class="live-pill">
+        <div class="phase-pulse"></div> Live
+      </div>
+      <div class="chip">May 2026 · Jefferson Garcia</div>
+    </div>
+  </div>
+
+  <!-- ══ VIEW: OVERVIEW ══ -->
+  <div class="view active" id="view-overview">
+
+    <div class="banner">
+      <div>
+        <img src="https://images.squarespace-cdn.com/content/v1/67d9ca84d84f806c0c74b759/fbcb5b29-6547-4a89-a8e0-187d68951304/Dog+Training+Elite+Logo_full-Color-TRUE.png.png?format=500w" alt="Dog Training Elite" style="height:54px;width:auto;display:block;object-fit:contain">
+      </div>
+      <div class="banner-text">
+        <div class="banner-title">5-star business. Massive untapped growth potential.</div>
+        <div class="banner-desc">Dog Training Elite LA has the reputation, the team, and the track record to dominate LA — 5.0 stars, 100+ reviews, a satisfaction guarantee, and 7 expert trainers. The opportunity: a virtually empty social presence where every post is a first-mover advantage. This dashboard shows exactly how to capture it.</div>
+      </div>
+      <div class="banner-stats">
+        <div class="banner-stat"><div class="bs-val" style="color:var(--blue)">Day 1</div><div class="bs-lbl">Starting Point</div></div>
+        <div class="banner-stat"><div class="bs-val" style="color:var(--gold)">$100k+</div><div class="bs-lbl">Yr 1 Opportunity</div></div>
+        <div class="banner-stat"><div class="bs-val" style="color:var(--gold)">5.0★</div><div class="bs-lbl">Google Rating</div></div>
+        <div class="banner-stat"><div class="bs-val" style="color:var(--green)">100+</div><div class="bs-lbl">Reviews</div></div>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="sec-hd"><div class="sec-hd-label">Key Metrics</div><div class="sec-hd-line"></div></div>
+    <div class="g4">
+      <div class="kpi kpi-1">
+        <div class="kpi-glow"></div>
+        <div class="kpi-top">
+          <div class="kpi-icon-bg">
+            <!-- Instagram icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig1)" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="url(#ig1)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig1)"/><defs><linearGradient id="ig1" x1="0" y1="24" x2="24" y2="0"><stop stop-color="#F09433"/><stop offset=".25" stop-color="#E6683C"/><stop offset=".5" stop-color="#DC2743"/><stop offset=".75" stop-color="#CC2366"/><stop offset="1" stop-color="#BC1888"/></linearGradient></defs></svg>
+          </div>
+          <div class="kpi-delta delta-green">↑ Opportunity</div>
+        </div>
+        <div class="kpi-val">90</div>
+        <div class="kpi-lbl">Instagram Followers</div>
+        <div class="kpi-bar-bg"><div class="kpi-bar" style="width:6%"></div></div>
+        <div class="kpi-foot"><span>Baseline</span><span>Goal Mo 12: 4,200+</span></div>
+      </div>
+      <div class="kpi kpi-2">
+        <div class="kpi-glow"></div>
+        <div class="kpi-top">
+          <div class="kpi-icon-bg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#8B5CF6" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="#8B5CF6" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="#8B5CF6" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke="#8B5CF6" stroke-width="2"/></svg>
+          </div>
+          <div class="kpi-delta delta-green">→ Launch</div>
+        </div>
+        <div class="kpi-val">0</div>
+        <div class="kpi-lbl">Posts per Week</div>
+        <div class="kpi-bar-bg"><div class="kpi-bar" style="width:0%"></div></div>
+        <div class="kpi-foot"><span>Baseline</span><span>Goal: 7 posts/week</span></div>
+      </div>
+      <div class="kpi kpi-3">
+        <div class="kpi-glow"></div>
+        <div class="kpi-top">
+          <div class="kpi-icon-bg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#10B981" stroke-width="2"/></svg>
+          </div>
+          <div class="kpi-delta delta-green">→ Launch</div>
+        </div>
+        <div class="kpi-val">~0</div>
+        <div class="kpi-lbl">Social Media Leads/Mo</div>
+        <div class="kpi-bar-bg"><div class="kpi-bar" style="width:0%"></div></div>
+        <div class="kpi-foot"><span>Baseline</span><span>Goal Mo 12: 55+/month</span></div>
+      </div>
+      <div class="kpi kpi-4">
+        <div class="kpi-glow"></div>
+        <div class="kpi-top">
+          <div class="kpi-icon-bg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><line x1="12" y1="1" x2="12" y2="23" stroke="#C9A96E" stroke-width="2"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="#C9A96E" stroke-width="2"/></svg>
+          </div>
+          <div class="kpi-delta delta-green">Month 3+</div>
+        </div>
+        <div class="kpi-val">N/A</div>
+        <div class="kpi-lbl">Cost per Lead (CPL)</div>
+        <div class="kpi-bar-bg"><div class="kpi-bar" style="width:0%"></div></div>
+        <div class="kpi-foot"><span>No ads yet</span><span>Goal by Mo 12: $13–18</span></div>
+      </div>
+    </div>
+
+    <!-- Revenue Opportunity -->
+    <div style="margin-bottom:18px;padding:20px 24px;background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(16,185,129,.05));border:1px solid rgba(201,169,110,.25);border-radius:14px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Revenue Left on the Table — Year 1</div>
+        <div style="font-size:13px;color:var(--t2);line-height:1.6">55 leads/month by Mo 12 · 28% close rate · avg package $800 = <strong style="color:var(--t1)">$12,300+/month</strong> in new revenue from social alone. Currently: $0. Every month without a system is <strong style="color:var(--gold)">~$2,000–8,000</strong> in unrealized bookings.</div>
+      </div>
+      <div style="display:flex;gap:16px;flex-shrink:0">
+        <div style="text-align:center;padding:14px 18px;background:rgba(201,169,110,.1);border-radius:10px;border:1px solid rgba(201,169,110,.2)">
+          <div style="font-size:24px;font-weight:900;color:var(--gold)">$100k+</div>
+          <div style="font-size:10px;color:var(--t3);margin-top:2px">Year 1 revenue potential</div>
+        </div>
+        <div style="text-align:center;padding:14px 18px;background:rgba(16,185,129,.08);border-radius:10px;border:1px solid rgba(16,185,129,.2)">
+          <div style="font-size:24px;font-weight:900;color:var(--green)">55+</div>
+          <div style="font-size:10px;color:var(--t3);margin-top:2px">Leads/mo by Month 12</div>
+        </div>
+        <div style="text-align:center;padding:14px 18px;background:rgba(10,132,255,.08);border-radius:10px;border:1px solid rgba(10,132,255,.2)">
+          <div style="font-size:24px;font-weight:900;color:var(--blue)">$13–18</div>
+          <div style="font-size:10px;color:var(--t3);margin-top:2px">CPL goal by Month 12</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Current state + Content pillars -->
+    <div class="g21">
+      <div class="card">
+        <div class="card-hd">
+          <div><div class="card-title">Channel Status — Where We Are Today</div><div class="card-sub">Current follower counts and activity across all platforms</div></div>
+        </div>
+        <div class="plat-list">
+          <!-- Instagram -->
+          <div class="plat-row" onclick="showView('channels',document.querySelector('[onclick*=channels]'))">
+            <div class="plat-icon" style="background:linear-gradient(135deg,#F09433,#E6683C,#DC2743,#CC2366,#BC1888)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>
+            </div>
+            <div class="plat-info"><div class="plat-name">Instagram</div><div class="plat-handle">@dogtrainingelitela</div></div>
+            <div class="plat-metrics">
+              <div class="pm"><div class="pm-val">90</div><div class="pm-lbl">followers</div></div>
+              <div class="pm"><div class="pm-val">24</div><div class="pm-lbl">posts</div></div>
+              <span class="status s-yellow">High Potential</span>
+            </div>
+          </div>
+          <!-- Facebook -->
+          <div class="plat-row">
+            <div class="plat-icon" style="background:#1877F2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </div>
+            <div class="plat-info"><div class="plat-name">Facebook</div><div class="plat-handle">@DogTrainingEliteLA</div></div>
+            <div class="plat-metrics">
+              <div class="pm"><div class="pm-val">—</div><div class="pm-lbl">followers</div></div>
+              <div class="pm"><div class="pm-val">0</div><div class="pm-lbl">ads active</div></div>
+              <span class="status s-green">Ready to Scale</span>
+            </div>
+          </div>
+          <!-- TikTok -->
+          <div class="plat-row">
+            <div class="plat-icon" style="background:#000;border:1px solid rgba(255,255,255,.15)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+            </div>
+            <div class="plat-info"><div class="plat-name">TikTok</div><div class="plat-handle">Not created yet</div></div>
+            <div class="plat-metrics">
+              <div class="pm"><div class="pm-val">0</div><div class="pm-lbl">followers</div></div>
+              <div class="pm"><div class="pm-val">0</div><div class="pm-lbl">videos</div></div>
+              <span class="status s-green">First Mover</span>
+            </div>
+          </div>
+          <!-- YouTube -->
+          <div class="plat-row">
+            <div class="plat-icon" style="background:#FF0000">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#FF0000"/></svg>
+            </div>
+            <div class="plat-info"><div class="plat-name">YouTube</div><div class="plat-handle">No local presence</div></div>
+            <div class="plat-metrics">
+              <div class="pm"><div class="pm-val">0</div><div class="pm-lbl">subscribers</div></div>
+              <div class="pm"><div class="pm-val">0</div><div class="pm-lbl">shorts</div></div>
+              <span class="status s-green">First Mover</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Pillars -->
+      <div class="card">
+        <div class="card-hd"><div><div class="card-title">Content Pillars</div><div class="card-sub">Distribution strategy by type</div></div></div>
+        <div class="pillar-cards">
+          <div class="pillar-card">
+            <div class="pillar-card-top"><div class="pillar-name">🎬 Transformation</div><div class="pillar-pct" style="color:var(--blue)">40%</div></div>
+            <div class="pillar-bar-bg"><div class="pillar-bar-fill" style="width:40%;background:linear-gradient(90deg,var(--blue),var(--cyan))"></div></div>
+            <div class="pillar-desc">Before/after videos with real clients. Most viral format in dog training niche.</div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card-top"><div class="pillar-name">📚 Education</div><div class="pillar-pct" style="color:var(--gold)">35%</div></div>
+            <div class="pillar-bar-bg"><div class="pillar-bar-fill" style="width:35%;background:linear-gradient(90deg,var(--gold),var(--gold2))"></div></div>
+            <div class="pillar-desc">Tips, common mistakes, myths. Drives saves — the metric that grows reach.</div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card-top"><div class="pillar-name">🤝 Humanization</div><div class="pillar-pct" style="color:var(--green)">25%</div></div>
+            <div class="pillar-bar-bg"><div class="pillar-bar-fill" style="width:25%;background:linear-gradient(90deg,var(--green),#34D399)"></div></div>
+            <div class="pillar-desc">Team behind the scenes. People hire people, not companies.</div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card-top"><div class="pillar-name">💬 Community</div><div class="pillar-pct" style="color:var(--purple)">+</div></div>
+            <div class="pillar-bar-bg"><div class="pillar-bar-fill" style="width:55%;background:linear-gradient(90deg,var(--purple),#A78BFA)"></div></div>
+            <div class="pillar-desc">Client reposts, polls, milestones. Multiplies organic reach for free.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Growth chart preview -->
+    <div class="sec-hd"><div class="sec-hd-label">12-Month Projection</div><div class="sec-hd-line"></div></div>
+    <div class="card" style="margin-bottom:18px">
+      <div class="card-hd">
+        <div><div class="card-title">Instagram Follower Growth — 12-Month Roadmap</div><div class="card-sub">Organic foundation (Mo 1–2) → Paid acceleration (Mo 3+) → Full scale (Mo 7+)</div></div>
+        <button class="action-btn blue" onclick="showView('analytics',document.querySelector('[onclick*=analytics]'))">Full Analytics →</button>
+      </div>
+      <div class="chart-box" style="height:210px"><canvas id="overviewGrowthChart"></canvas></div>
+    </div>
+
+  </div><!-- /overview -->
+
+  <!-- ══ VIEW: CHANNELS ══ -->
+  <div class="view" id="view-channels">
+    <div class="sec-hd"><div class="sec-hd-label">Channel Deep Dive</div><div class="sec-hd-line"></div></div>
+
+    <div class="g2">
+      <!-- Instagram -->
+      <div class="card">
+        <div class="card-hd">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#F09433,#DC2743,#BC1888);display:flex;align-items:center;justify-content:center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>
+            </div>
+            <div><div class="card-title">Instagram</div><div class="card-sub">@dogtrainingelitela</div></div>
+          </div>
+          <span class="status s-red">Critical — Priority #1</span>
+        </div>
+        <div class="g2" style="margin-bottom:14px">
+          <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15);border-radius:9px;padding:12px;text-align:center">
+            <div style="font-size:24px;font-weight:900;color:var(--red)">90</div>
+            <div style="font-size:10px;color:var(--t3)">Followers now</div>
+          </div>
+          <div style="background:rgba(10,132,255,.08);border:1px solid rgba(10,132,255,.15);border-radius:9px;padding:12px;text-align:center">
+            <div style="font-size:24px;font-weight:900;color:var(--blue)">2,000</div>
+            <div style="font-size:10px;color:var(--t3)">Target (6 mo)</div>
+          </div>
+        </div>
+        <div class="prog-row"><div class="prog-top"><span class="prog-name">Posts total</span><span class="prog-val">24 posts</span></div><div class="prog-bg"><div class="prog-fill" style="width:8%;background:var(--blue)"></div></div></div>
+        <div class="prog-row"><div class="prog-top"><span class="prog-name">Posting frequency</span><span class="prog-val">Irregular / near zero</span></div><div class="prog-bg"><div class="prog-fill" style="width:5%;background:var(--red)"></div></div></div>
+        <div class="prog-row"><div class="prog-top"><span class="prog-name">Engagement rate</span><span class="prog-val">Unknown</span></div><div class="prog-bg"><div class="prog-fill" style="width:0%;background:var(--green)"></div></div></div>
+        <div style="margin-top:12px;padding:10px 12px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);border-radius:8px;font-size:11px;color:var(--t2)">
+          <strong style="color:var(--red)">Gap:</strong> Competitors in LA have 2,000–15,000 followers. Every day without content is a lead going to someone else.
+        </div>
+      </div>
+
+      <!-- Facebook -->
+      <div class="card">
+        <div class="card-hd">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:36px;height:36px;border-radius:9px;background:#1877F2;display:flex;align-items:center;justify-content:center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </div>
+            <div><div class="card-title">Facebook</div><div class="card-sub">@DogTrainingEliteLA</div></div>
+          </div>
+          <span class="status s-yellow">No Ads Running</span>
+        </div>
+        <div class="g2" style="margin-bottom:14px">
+          <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);border-radius:9px;padding:12px;text-align:center">
+            <div style="font-size:24px;font-weight:900;color:var(--yellow)">0</div>
+            <div style="font-size:10px;color:var(--t3)">Active Ads</div>
+          </div>
+          <div style="background:rgba(10,132,255,.08);border:1px solid rgba(10,132,255,.15);border-radius:9px;padding:12px;text-align:center">
+            <div style="font-size:24px;font-weight:900;color:var(--blue)">$10–20</div>
+            <div style="font-size:10px;color:var(--t3)">Target CPL</div>
+          </div>
+        </div>
+        <div class="prog-row"><div class="prog-top"><span class="prog-name">Meta Ads activity</span><span class="prog-val">None detected</span></div><div class="prog-bg"><div class="prog-fill" style="width:0%;background:var(--blue)"></div></div></div>
+        <div class="prog-row"><div class="prog-top"><span class="prog-name">Retargeting setup</span><span class="prog-val">Not active</span></div><div class="prog-bg"><div class="prog-fill" style="width:0%;background:var(--purple)"></div></div></div>
+        <div class="prog-row"><div class="prog-top"><span class="prog-name">Page content activity</span><span class="prog-val">Minimal</span></div><div class="prog-bg"><div class="prog-fill" style="width:15%;background:var(--yellow)"></div></div></div>
+        <div style="margin-top:12px;padding:10px 12px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:8px;font-size:11px;color:var(--t2)">
+          <strong style="color:var(--yellow)">Opportunity:</strong> "Free Assessment" lead campaign on Meta Ads could bring leads at $10–20 each. Not running = leaving clients to competitors.
+        </div>
+      </div>
+
+      <!-- TikTok -->
+      <div class="card">
+        <div class="card-hd">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:36px;height:36px;border-radius:9px;background:#000;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+            </div>
+            <div><div class="card-title">TikTok</div><div class="card-sub">Account not created yet</div></div>
+          </div>
+          <span class="status s-gray">Missing</span>
+        </div>
+        <div style="padding:20px;text-align:center;background:rgba(255,255,255,.025);border-radius:9px;border:1px dashed var(--border)">
+          <div style="font-size:28px;font-weight:900;color:var(--t3);margin-bottom:6px">0</div>
+          <div style="font-size:11px;color:var(--t3);margin-bottom:12px">No account, no videos, no reach</div>
+          <div style="font-size:11px;color:var(--t2);line-height:1.6">TikTok's algorithm is the most generous for new accounts. A dog training transformation video can reach 50,000+ views with 0 followers. Same content as Instagram Reels — just posted twice.</div>
+        </div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="text-align:center;padding:10px;background:rgba(105,201,208,.08);border:1px solid rgba(105,201,208,.2);border-radius:8px">
+            <div style="font-size:18px;font-weight:800;color:#69C9D0">1,000</div>
+            <div style="font-size:10px;color:var(--t3)">Target Month 3</div>
+          </div>
+          <div style="text-align:center;padding:10px;background:rgba(105,201,208,.05);border:1px solid rgba(105,201,208,.15);border-radius:8px">
+            <div style="font-size:18px;font-weight:800;color:#69C9D0">$0</div>
+            <div style="font-size:10px;color:var(--t3)">Ad spend needed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- YouTube -->
+      <div class="card">
+        <div class="card-hd">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:36px;height:36px;border-radius:9px;background:#FF0000;display:flex;align-items:center;justify-content:center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#FF0000"/></svg>
+            </div>
+            <div><div class="card-title">YouTube</div><div class="card-sub">No local channel</div></div>
+          </div>
+          <span class="status s-gray">Missing</span>
+        </div>
+        <div style="padding:20px;text-align:center;background:rgba(255,255,255,.025);border-radius:9px;border:1px dashed var(--border);margin-bottom:12px">
+          <div style="font-size:11px;color:var(--t2);line-height:1.6">YouTube Shorts index on Google Search. Someone searching "dog trainer near me" or "how to stop dog aggression in LA" could find Dog Training Elite before any paid ad.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="text-align:center;padding:10px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px">
+            <div style="font-size:18px;font-weight:800;color:#FF4444">4</div>
+            <div style="font-size:10px;color:var(--t3)">Shorts Month 1</div>
+          </div>
+          <div style="text-align:center;padding:10px;background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15);border-radius:8px">
+            <div style="font-size:18px;font-weight:800;color:#FF4444">15+</div>
+            <div style="font-size:10px;color:var(--t3)">Shorts Month 6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /channels -->
+
+  <!-- ══ VIEW: CONTENT CALENDAR ══ -->
+  <div class="view" id="view-content">
+    <div class="sec-hd"><div class="sec-hd-label">Content Calendar</div><div class="sec-hd-line"></div></div>
+
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-hd">
+        <div><div class="card-title">Weekly Schedule — Click any post to edit</div><div class="card-sub">4 Reels + 3 Carousels + daily Stories · All platforms</div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="cal-filter-btn active" onclick="filterCal('all',this)">All</button>
+          <button class="cal-filter-btn" onclick="filterCal('reel',this)">Reels</button>
+          <button class="cal-filter-btn" onclick="filterCal('carousel',this)">Carousels</button>
+          <button class="cal-filter-btn" onclick="filterCal('stories',this)">Stories</button>
+          <button class="action-btn blue" onclick="openModal('Add New Post','','','')">+ Add Post</button>
+        </div>
+      </div>
+
+      <div class="cal-grid" id="cal-grid">
+        <!-- Monday -->
+        <div class="cal-day">
+          <div class="cal-day-name">Monday</div>
+          <div class="cal-pills">
+            <div class="cal-pill p-reel" data-type="reel" onclick="openModal('Monday — Reel','Transformation','Before/after dog transformation video. 30–45 sec. Hook: Show the problem in the first 3 seconds.','Instagram + TikTok')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Reel
+            </div>
+            <div class="cal-content-tag">Transformation</div>
+            <div class="cal-pill p-stories" data-type="stories" onclick="openModal('Monday — Stories','Community','Poll: Does your dog do this? + clip from today\'s session','Instagram + Facebook')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg> Stories
+            </div>
+            <div class="cal-pill p-tiktok" data-type="reel" onclick="openModal('Monday — TikTok','Transformation','Same reel posted to TikTok. Trending audio optional.','TikTok')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77.39 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.13 6.33 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg> TikTok
+            </div>
+          </div>
+        </div>
+        <!-- Tuesday -->
+        <div class="cal-day">
+          <div class="cal-day-name">Tuesday</div>
+          <div class="cal-pills">
+            <div class="cal-pill p-carousel" data-type="carousel" onclick="openModal('Tuesday — Carousel','Education','\"The #1 mistake dog owners make in LA\" — 6 slides. Each slide = one mistake. Last slide = CTA.','Instagram + Facebook')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Carousel
+            </div>
+            <div class="cal-content-tag">Education</div>
+            <div class="cal-pill p-stories" data-type="stories" onclick="openModal('Tuesday — Stories','Education','Share a quick tip from today\'s carousel as a Story. Add a poll.','Instagram + Facebook')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg> Stories
+            </div>
+          </div>
+        </div>
+        <!-- Wednesday -->
+        <div class="cal-day">
+          <div class="cal-day-name">Wednesday</div>
+          <div class="cal-pills">
+            <div class="cal-pill p-reel" data-type="reel" onclick="openModal('Wednesday — Reel','Education','Trainer tip in action. 30 sec. Show the technique, not just talk about it.','Instagram + TikTok')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Reel
+            </div>
+            <div class="cal-content-tag">Education tip</div>
+            <div class="cal-pill p-stories" data-type="stories" onclick="openModal('Wednesday — Stories','Engagement','Ask: What\'s your dog\'s biggest challenge? (story question sticker)','Instagram')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg> Stories
+            </div>
+            <div class="cal-pill p-tiktok" data-type="reel" onclick="openModal('Wednesday — TikTok','Education','Same reel on TikTok.','TikTok')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77.39 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.13 6.33 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg> TikTok
+            </div>
+          </div>
+        </div>
+        <!-- Thursday -->
+        <div class="cal-day">
+          <div class="cal-day-name">Thursday</div>
+          <div class="cal-pills">
+            <div class="cal-pill p-carousel" data-type="carousel" onclick="openModal('Thursday — Carousel','Proof','Client story carousel. Slide 1: dog problem. Slides 2-4: the process. Slide 5: result. Slide 6: client quote + CTA.','Instagram + Facebook')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Carousel
+            </div>
+            <div class="cal-content-tag">Client story</div>
+            <div class="cal-pill p-stories" data-type="stories" onclick="openModal('Thursday — Stories','Social Proof','Share the client review + tag them if they allow it.','Instagram')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg> Stories
+            </div>
+          </div>
+        </div>
+        <!-- Friday -->
+        <div class="cal-day">
+          <div class="cal-day-name">Friday</div>
+          <div class="cal-pills">
+            <div class="cal-pill p-reel" data-type="reel" onclick="openModal('Friday — Reel','Humanization','Behind the scenes with a trainer. A day in the field. Show the real people, not just the dogs.','Instagram + TikTok')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Reel
+            </div>
+            <div class="cal-content-tag">Behind scenes</div>
+            <div class="cal-pill p-stories" data-type="stories" onclick="openModal('Friday — Stories','Team','Introduce a trainer. Quick Q&A format in Stories.','Instagram + Facebook')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg> Stories
+            </div>
+            <div class="cal-pill p-tiktok" data-type="reel" onclick="openModal('Friday — TikTok','Humanization','Behind scenes reel on TikTok.','TikTok')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77.39 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.13 6.33 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg> TikTok
+            </div>
+          </div>
+        </div>
+        <!-- Saturday -->
+        <div class="cal-day">
+          <div class="cal-day-name">Saturday</div>
+          <div class="cal-pills">
+            <div class="cal-pill p-carousel" data-type="carousel" onclick="openModal('Saturday — Carousel','Community','\"Does your dog do this?\" — 5 slides showing common behaviors. Ask followers to comment which one is their dog.','Instagram + Facebook')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Carousel
+            </div>
+            <div class="cal-content-tag">Community</div>
+            <div class="cal-pill p-stories" data-type="stories" onclick="openModal('Saturday — Stories','Community','Poll + reshare comments from the carousel.','Instagram')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg> Stories
+            </div>
+          </div>
+        </div>
+        <!-- Sunday -->
+        <div class="cal-day">
+          <div class="cal-day-name">Sunday</div>
+          <div class="cal-pills">
+            <div class="cal-pill p-reel" data-type="reel" onclick="openModal('Sunday — Reel','Social Proof','Client video testimonial. 30–45 sec. The client talks, not the trainer.','Instagram + TikTok + YouTube')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Reel
+            </div>
+            <div class="cal-content-tag">Testimonial</div>
+            <div class="cal-pill p-stories" data-type="stories" onclick="openModal('Sunday — Stories','Social Proof','Share the testimonial + link to book a free evaluation.','Instagram + Facebook')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/></svg> Stories
+            </div>
+            <div class="cal-pill p-yt" data-type="reel" onclick="openModal('Sunday — YouTube Short','Social Proof','Upload Sunday Reel as a YouTube Short. Add location tags: Los Angeles.','YouTube')">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#FF0000"/></svg> YT Short
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content legend -->
+    <div class="card">
+      <div class="card-hd"><div><div class="card-title">Content System — One Filming Day, All Platforms</div><div class="card-sub">Film once per week with a trainer. That session generates all content for the week.</div></div></div>
+      <div class="g3" style="margin-bottom:0">
+        <div style="padding:14px;background:rgba(10,132,255,.07);border:1px solid rgba(10,132,255,.2);border-radius:10px">
+          <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px">Step 1 — Film</div>
+          <div style="font-size:11px;color:var(--t2);line-height:1.6">One 1-hour session with a trainer and a real client. Capture raw footage of the training process, the dog's behavior, and the trainer explaining what they're doing.</div>
+        </div>
+        <div style="padding:14px;background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.2);border-radius:10px">
+          <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:6px">Step 2 — Cut</div>
+          <div style="font-size:11px;color:var(--t2);line-height:1.6">From that footage: 3 Reels (30–45 sec each) + screenshots for 2 Carousels. Total editing time: 90 minutes. One filming session = the full week of content.</div>
+        </div>
+        <div style="padding:14px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:10px">
+          <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px">Step 3 — Distribute</div>
+          <div style="font-size:11px;color:var(--t2);line-height:1.6">Same Reel → Instagram → TikTok → YouTube Short. Same content, 3x the reach, zero extra production time. Carousels go to Instagram + Facebook.</div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /content -->
+
+  <!-- ══ VIEW: ANALYTICS ══ -->
+  <div class="view" id="view-analytics">
+    <div class="sec-hd"><div class="sec-hd-label">12-Month Growth Plan</div><div class="sec-hd-line"></div></div>
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-hd"><div><div class="card-title">Instagram Follower Growth — Year 1</div><div class="card-sub">From 90 to 4,200+ followers: organic foundation then paid acceleration from Month 3</div></div></div>
+      <div class="chart-box" style="height:240px"><canvas id="growthChart6mo"></canvas></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="card-hd"><div><div class="card-title">Monthly Lead Volume — Year 1</div><div class="card-sub">DMs + form fills + calls from social · 0 → 55+ leads/month</div></div></div>
+        <div class="chart-box" style="height:200px"><canvas id="leadsChart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div><div class="card-title">Content Volume per Month</div><div class="card-sub">Reels vs Carousels vs Stories</div></div></div>
+        <div class="chart-box" style="height:200px"><canvas id="contentChart"></canvas></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px">
+      <div style="background:rgba(10,132,255,.08);border:1px solid rgba(10,132,255,.2);border-radius:12px;padding:16px;text-align:center">
+        <div style="font-size:10px;color:var(--blue);font-weight:700;margin-bottom:6px">MONTH 1–2</div>
+        <div style="font-size:20px;font-weight:900;color:var(--blue);margin-bottom:4px">$0</div>
+        <div style="font-size:10px;color:var(--t2)">Content foundation · organic only · build audience + content library</div>
+      </div>
+      <div style="background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:12px;padding:16px;text-align:center">
+        <div style="font-size:10px;color:var(--purple);font-weight:700;margin-bottom:6px">MONTH 3–4</div>
+        <div style="font-size:20px;font-weight:900;color:var(--purple);margin-bottom:4px">$400–600</div>
+        <div style="font-size:10px;color:var(--t2)">First Meta Ads · learning phase · CPL $45–55 (expected, improves fast)</div>
+      </div>
+      <div style="background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);border-radius:12px;padding:16px;text-align:center">
+        <div style="font-size:10px;color:var(--gold);font-weight:700;margin-bottom:6px">MONTH 5–8</div>
+        <div style="font-size:20px;font-weight:900;color:var(--gold);margin-bottom:4px">$700–1k</div>
+        <div style="font-size:10px;color:var(--t2)">Full funnel active · retargeting · CPL drops to $20–32 · 28–42 leads/mo</div>
+      </div>
+      <div style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:12px;padding:16px;text-align:center">
+        <div style="font-size:10px;color:var(--green);font-weight:700;margin-bottom:6px">MONTH 9–12</div>
+        <div style="font-size:20px;font-weight:900;color:var(--green);margin-bottom:4px">$1k–1.5k</div>
+        <div style="font-size:10px;color:var(--t2)">Scale proven campaigns · lookalike audiences · CPL $13–18 · 50+ leads/mo</div>
+      </div>
+    </div>
+  </div><!-- /analytics -->
+
+  <!-- ══ VIEW: TEAM ══ -->
+  <div class="view" id="view-team">
+    <div class="sec-hd"><div class="sec-hd-label">The Team — 7 Experts</div><div class="sec-hd-line"></div></div>
+    <div style="margin-bottom:14px;padding:14px 16px;background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.2);border-radius:10px;font-size:12px;color:var(--t2);line-height:1.6">
+      <strong style="color:var(--gold)">Humanization strategy:</strong> Each team member should appear on camera at least once per month. The audience inviting a trainer into their home already needs to feel like they know them. Content featuring Dominique, Clayton, and Jon consistently gets the highest engagement because people connect with people.
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#1A2B4A,#0A84FF)">J</div>
+        <div class="team-name">Jon</div>
+        <div class="team-role">Owner & Head Trainer</div>
+        <div class="team-badge" style="background:rgba(201,169,110,.15);color:var(--gold)">40+ yrs exp</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#065F46,#10B981)">D</div>
+        <div class="team-name">Dominique</div>
+        <div class="team-role">Behavior Specialist</div>
+        <div class="team-badge" style="background:rgba(16,185,129,.12);color:var(--green)">⭐ Most mentioned</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#1E3A8A,#3B82F6)">C</div>
+        <div class="team-name">Clayton</div>
+        <div class="team-role">Trainer</div>
+        <div class="team-badge" style="background:rgba(59,130,246,.12);color:#60A5FA">Service dog spec.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#1F2937,#6B7280)">G</div>
+        <div class="team-name">Greg</div>
+        <div class="team-role">Sales & Client Success</div>
+        <div class="team-badge" style="background:rgba(255,255,255,.06);color:var(--t3)">Animal behavior spec.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#7C3AED,#8B5CF6)">M</div>
+        <div class="team-name">Marcos</div>
+        <div class="team-role">Trainer</div>
+        <div class="team-badge" style="background:rgba(139,92,246,.12);color:var(--purple)">Ex-vet technician</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#B45309,#F59E0B)">K</div>
+        <div class="team-name">Kyla</div>
+        <div class="team-role">Trainer (since 2024)</div>
+        <div class="team-badge" style="background:rgba(245,158,11,.1);color:var(--yellow)">Puppy specialist</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#111827,#374151)">S</div>
+        <div class="team-name">Sean</div>
+        <div class="team-role">Operations</div>
+        <div class="team-badge" style="background:rgba(255,255,255,.05);color:var(--t3)">Behind the scenes</div>
+      </div>
+    </div>
+  </div><!-- /team -->
+
+  <!-- ══ VIEW: SERVICES ══ -->
+  <div class="view" id="view-services">
+    <div class="sec-hd"><div class="sec-hd-label">Services</div><div class="sec-hd-line"></div></div>
+    <div class="g2">
+      <div class="card">
+        <div class="card-hd"><div><div class="card-title">Service Catalog</div><div class="card-sub">6 programs — content angles per service</div></div></div>
+        <div class="service-list">
+          <div class="service-row"><div><div class="service-name">Obedience Training</div><div class="service-desc">Before/after reels · "7-day challenge" hooks</div></div><span class="service-badge">Core</span></div>
+          <div class="service-row"><div><div class="service-name">Puppy Training</div><div class="service-desc">Cute content · high shareability · new owner pain points</div></div><span class="service-badge">Popular</span></div>
+          <div class="service-row"><div><div class="service-name">Service Dog Training</div><div class="service-desc">Emotional storytelling · PTSD/anxiety awareness content</div></div><span class="service-badge">Premium</span></div>
+          <div class="service-row"><div><div class="service-name">Anxiety &amp; Aggression</div><div class="service-desc">Problem-solving content · "Is your dog doing this?" hooks</div></div><span class="service-badge">Specialist</span></div>
+          <div class="service-row"><div><div class="service-name">Therapy Dog Training</div><div class="service-desc">Certification journey content · community impact stories</div></div><span class="service-badge">Cert</span></div>
+          <div class="service-row"><div><div class="service-name">Group Classes</div><div class="service-desc">Social proof content · community building · low-barrier entry</div></div><span class="service-badge">Entry</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div><div class="card-title">Business Highlights</div><div class="card-sub">Key differentiators to feature in content</div></div></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="padding:14px;background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.2);border-radius:10px">
+            <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:4px">Satisfaction Guarantee</div>
+            <div style="font-size:11px;color:var(--t2)">"If we don't deliver the results promised, we keep working for free." — This is a powerful CTA for ads.</div>
+          </div>
+          <div style="padding:14px;background:rgba(10,132,255,.07);border:1px solid rgba(10,132,255,.2);border-radius:10px">
+            <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:4px">5.0 ★ · 100+ Reviews</div>
+            <div style="font-size:11px;color:var(--t2)">Consistently rated 5.0. This social proof should be front and center on all content and ads.</div>
+          </div>
+          <div style="padding:14px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:10px">
+            <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:4px">In-Home Training</div>
+            <div style="font-size:11px;color:var(--t2)">They come to you. Serves 15+ cities in LA metro. This is a premium convenience angle for marketing.</div>
+          </div>
+          <div style="padding:14px;background:rgba(139,92,246,.07);border:1px solid rgba(139,92,246,.2);border-radius:10px">
+            <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:4px">40+ Years Experience</div>
+            <div style="font-size:11px;color:var(--t2)">The franchise has 40+ years behind it. Authority and trust — use this in every ad headline.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /services -->
+
+  <!-- ══ VIEW: METRICS ══ -->
+  <div class="view" id="view-metrics">
+    <div class="sec-hd"><div class="sec-hd-label">KPI Tracking Matrix</div><div class="sec-hd-line"></div></div>
+    <div class="card">
+      <div class="card-hd"><div><div class="card-title">Performance Metrics — 12-Month Growth Targets</div><div class="card-sub">Baseline → quarterly checkpoints → Year 1 goals</div></div></div>
+      <table class="mtable">
+        <thead>
+          <tr>
+            <th>Metric</th><th>Platform</th><th>Baseline</th><th>Month 3</th><th>Month 6</th><th>Month 9</th><th>Month 12</th><th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="m-name">Followers</span></td><td>Instagram</td><td><span class="m-bad">90</span></td><td>500</td><td>1,350</td><td>2,700</td><td><span class="m-good">4,200+</span></td><td><span class="prio ph">HIGH</span></td></tr>
+          <tr><td><span class="m-name">Posts/Week</span></td><td>All platforms</td><td><span class="m-bad">~0</span></td><td>7</td><td>7</td><td>7</td><td><span class="m-good">7+</span></td><td><span class="prio ph">HIGH</span></td></tr>
+          <tr><td><span class="m-name">Reel Watch Time</span></td><td>Instagram</td><td><span class="m-bad">Unknown</span></td><td>&gt;45%</td><td>&gt;55%</td><td>&gt;60%</td><td><span class="m-good">&gt;65%</span></td><td><span class="prio ph">HIGH</span></td></tr>
+          <tr><td><span class="m-name">Save Rate</span></td><td>Instagram</td><td><span class="m-bad">Unknown</span></td><td>1.5%</td><td>3%</td><td>4%</td><td><span class="m-good">5%+</span></td><td><span class="prio ph">HIGH</span></td></tr>
+          <tr><td><span class="m-name">Leads / Inquiries</span></td><td>IG + Facebook</td><td><span class="m-bad">~0</span></td><td>10/mo</td><td>28/mo</td><td>42/mo</td><td><span class="m-good">55+/mo</span></td><td><span class="prio ph">HIGH</span></td></tr>
+          <tr><td><span class="m-name">Active Meta Ads</span></td><td>Facebook/IG</td><td><span class="m-bad">0</span></td><td>1–2</td><td>3</td><td>4</td><td><span class="m-good">4–5</span></td><td><span class="prio ph">HIGH</span></td></tr>
+          <tr><td><span class="m-name">Cost per Lead (CPL)</span></td><td>Meta Ads</td><td><span class="m-bad">N/A</span></td><td>$45–55</td><td>$25–32</td><td>$18–24</td><td><span class="m-good">$13–18</span></td><td><span class="prio ph">HIGH</span></td></tr>
+          <tr><td><span class="m-name">TikTok Followers</span></td><td>TikTok</td><td><span class="m-bad">0</span></td><td>120</td><td>500</td><td>1,200</td><td><span class="m-good">2,500+</span></td><td><span class="prio pm2">MED</span></td></tr>
+          <tr><td><span class="m-name">YouTube Shorts</span></td><td>YouTube</td><td><span class="m-bad">0</span></td><td>12</td><td>28</td><td>44</td><td><span class="m-good">52+</span></td><td><span class="prio pm2">MED</span></td></tr>
+          <tr><td><span class="m-name">Bio Link Clicks</span></td><td>Instagram</td><td><span class="m-bad">~0</span></td><td>35/mo</td><td>100/mo</td><td>160/mo</td><td><span class="m-good">220+/mo</span></td><td><span class="prio pm2">MED</span></td></tr>
+          <tr><td><span class="m-name">Google Reviews</span></td><td>Google</td><td><span class="m-good">100+</span></td><td>112</td><td>126</td><td>140</td><td><span class="m-good">155+</span></td><td><span class="prio pm2">MED</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div><!-- /metrics -->
+
+</main>
+</div>
+
+<!-- ══ MODAL ══ -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-title" id="modal-title">Post Details</div>
+    <div class="modal-sub" id="modal-sub">Edit this content slot</div>
+    <div class="modal-field">
+      <div class="modal-label">Content Type / Pillar</div>
+      <input class="modal-input" id="modal-pillar" type="text" placeholder="e.g. Transformation, Education...">
+    </div>
+    <div class="modal-field">
+      <div class="modal-label">Content Description / Script Notes</div>
+      <textarea class="modal-input" id="modal-notes" rows="4" placeholder="Describe what this post should cover..."></textarea>
+    </div>
+    <div class="modal-field">
+      <div class="modal-label">Platform(s)</div>
+      <input class="modal-input" id="modal-platform" type="text" placeholder="e.g. Instagram + TikTok">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="closeModal()">Save Post</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── NAVIGATION ──
+function showView(id, el) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (el) el.classList.add('active');
+  const titles = {
+    overview: 'Overview', channels: 'Channels', content: 'Content Calendar',
+    analytics: 'Analytics & Growth', team: 'Team', services: 'Services', metrics: 'KPI Tracker'
+  };
+  document.getElementById('topbar-title').textContent = titles[id] || id;
+  // init charts for that view
+  if (id === 'analytics' && !window.analyticsInit) { initAnalyticsCharts(); window.analyticsInit = true; }
+}
+
+// ── CALENDAR FILTER ──
+function filterCal(type, btn) {
+  document.querySelectorAll('.cal-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.cal-pill').forEach(p => {
+    if (type === 'all') { p.style.display = ''; }
+    else { p.style.display = p.dataset.type === type ? '' : 'none'; }
+  });
+}
+
+// ── MODAL ──
+function openModal(title, pillar, notes, platform) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-sub').textContent = 'Review or edit the details for this content slot';
+  document.getElementById('modal-pillar').value = pillar;
+  document.getElementById('modal-notes').value = notes;
+  document.getElementById('modal-platform').value = platform;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+// ── CHART DEFAULTS ──
+const chartDefaults = () => {
+  Chart.defaults.color = '#64748B';
+  Chart.defaults.font.family = 'Inter';
+  Chart.defaults.font.size = 11;
+};
+
+// ── OVERVIEW GROWTH CHART ──
+function initOverviewChart() {
+  chartDefaults();
+  const ctx = document.getElementById('overviewGrowthChart').getContext('2d');
+  const grad = ctx.createLinearGradient(0, 0, 0, 210);
+  grad.addColorStop(0, 'rgba(10,132,255,0.25)');
+  grad.addColorStop(1, 'rgba(10,132,255,0)');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Now', 'Mo 1', 'Mo 2', 'Mo 3', 'Mo 4', 'Mo 5', 'Mo 6', 'Mo 7', 'Mo 8', 'Mo 9', 'Mo 10', 'Mo 11', 'Mo 12'],
+      datasets: [
+        { label: 'DTE LA Projected', data: [90,180,320,500,720,1000,1350,1750,2200,2700,3200,3700,4200], borderColor:'#0A84FF', borderWidth:2.5, backgroundColor:grad, fill:true, tension:0.45, pointBackgroundColor:'#0A84FF', pointBorderColor:'#111827', pointBorderWidth:2, pointRadius:4 },
+        { label: 'Competitor Avg', data: [5000,5050,5100,5160,5220,5280,5350,5420,5490,5560,5630,5700,5770], borderColor:'rgba(201,169,110,0.45)', borderWidth:1.5, borderDash:[5,4], fill:false, tension:0.1, pointRadius:0 }
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:'index', intersect:false },
+      plugins:{ legend:{ position:'top', align:'end', labels:{ boxWidth:10, padding:14 } }, tooltip:{ backgroundColor:'#1C2333', borderColor:'rgba(255,255,255,0.08)', borderWidth:1, padding:10 } },
+      scales:{
+        x:{ grid:{ color:'rgba(255,255,255,0.04)', drawBorder:false }, border:{ display:false } },
+        y:{ grid:{ color:'rgba(255,255,255,0.04)', drawBorder:false }, border:{ display:false }, ticks:{ callback: v => v>=1000?(v/1000)+'k':v } }
+      }
+    }
+  });
+}
+
+// ── ANALYTICS CHARTS ──
+function initAnalyticsCharts() {
+  chartDefaults();
+  // 6-month growth
+  const gctx = document.getElementById('growthChart6mo').getContext('2d');
+  const gg = gctx.createLinearGradient(0,0,0,240);
+  gg.addColorStop(0,'rgba(10,132,255,0.28)'); gg.addColorStop(1,'rgba(10,132,255,0)');
+  new Chart(gctx, {
+    type:'line',
+    data:{
+      labels:['Now','Mo 1','Mo 2','Mo 3','Mo 4','Mo 5','Mo 6','Mo 7','Mo 8','Mo 9','Mo 10','Mo 11','Mo 12'],
+      datasets:[
+        { label:'Followers', data:[90,180,320,500,720,1000,1350,1750,2200,2700,3200,3700,4200], borderColor:'#0A84FF', borderWidth:2.5, backgroundColor:gg, fill:true, tension:0.45, pointBackgroundColor:'#0A84FF', pointBorderColor:'#111827', pointBorderWidth:2, pointRadius:4 },
+        { label:'Competitor', data:[5000,5050,5100,5160,5220,5280,5350,5420,5490,5560,5630,5700,5770], borderColor:'rgba(201,169,110,0.4)', borderWidth:1.5, borderDash:[5,4], fill:false, tension:0.1, pointRadius:0 }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false}, plugins:{ legend:{position:'top',align:'end',labels:{boxWidth:10,padding:12}}, tooltip:{backgroundColor:'#1C2333',borderColor:'rgba(255,255,255,0.08)',borderWidth:1,padding:10} }, scales:{ x:{grid:{color:'rgba(255,255,255,0.04)',drawBorder:false},border:{display:false}}, y:{grid:{color:'rgba(255,255,255,0.04)',drawBorder:false},border:{display:false},ticks:{callback:v=>v>=1000?(v/1000)+'k':v}} } }
+  });
+
+  // Leads chart
+  const lctx = document.getElementById('leadsChart').getContext('2d');
+  const lg = lctx.createLinearGradient(0,0,0,200);
+  lg.addColorStop(0,'rgba(16,185,129,0.25)'); lg.addColorStop(1,'rgba(16,185,129,0)');
+  new Chart(lctx, {
+    type:'bar',
+    data:{
+      labels:['Mo 1','Mo 2','Mo 3','Mo 4','Mo 5','Mo 6','Mo 7','Mo 8','Mo 9','Mo 10','Mo 11','Mo 12'],
+      datasets:[{ label:'Leads/Month', data:[2,5,10,16,22,28,33,38,42,46,50,55], backgroundColor:['rgba(10,132,255,0.6)','rgba(10,132,255,0.6)','rgba(139,92,246,0.7)','rgba(139,92,246,0.7)','rgba(139,92,246,0.7)','rgba(139,92,246,0.7)','rgba(16,185,129,0.7)','rgba(16,185,129,0.7)','rgba(16,185,129,0.7)','rgba(16,185,129,0.7)','rgba(16,185,129,0.7)','rgba(16,185,129,0.7)'], borderRadius:7, borderSkipped:false }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{backgroundColor:'#1C2333',borderColor:'rgba(255,255,255,0.08)',borderWidth:1,padding:10} }, scales:{ x:{grid:{display:false},border:{display:false}}, y:{grid:{color:'rgba(255,255,255,0.04)',drawBorder:false},border:{display:false}} } }
+  });
+
+  // Content volume chart
+  const cctx = document.getElementById('contentChart').getContext('2d');
+  new Chart(cctx, {
+    type:'bar',
+    data:{
+      labels:['Mo 1','Mo 2','Mo 3','Mo 4','Mo 5','Mo 6','Mo 7','Mo 8','Mo 9','Mo 10','Mo 11','Mo 12'],
+      datasets:[
+        { label:'Reels', data:[16,16,16,16,16,16,16,16,16,16,16,16], backgroundColor:'rgba(10,132,255,0.7)', borderRadius:5, borderSkipped:false },
+        { label:'Carousels', data:[12,12,12,12,12,12,12,12,12,12,12,12], backgroundColor:'rgba(201,169,110,0.65)', borderRadius:5, borderSkipped:false },
+        { label:'Stories', data:[28,28,28,28,28,28,28,28,28,28,28,28], backgroundColor:'rgba(139,92,246,0.5)', borderRadius:5, borderSkipped:false }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'top',align:'end',labels:{boxWidth:10,padding:10}}, tooltip:{backgroundColor:'#1C2333',borderColor:'rgba(255,255,255,0.08)',borderWidth:1,padding:10} }, scales:{ x:{grid:{display:false},border:{display:false},stacked:true}, y:{grid:{color:'rgba(255,255,255,0.04)',drawBorder:false},border:{display:false},stacked:true} } }
+  });
+}
+
+// ── ANIMATE BARS ──
+function animateBars() {
+  document.querySelectorAll('.kpi-bar, .pillar-bar-fill, .prog-fill').forEach(el => {
+    const w = el.style.width; el.style.width = '0';
+    requestAnimationFrame(() => requestAnimationFrame(() => { el.style.width = w; }));
+  });
+}
+
+// ── INIT ──
+window.addEventListener('load', () => {
+  initOverviewChart();
+  animateBars();
+});
+</script>
+</body>
+</html>
