@@ -6,6 +6,7 @@
 <title>Dog Training Elite LA — Marketing Dashboard</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -851,19 +852,19 @@ svg.icon{display:inline-block;vertical-align:middle}
 
     <!-- Content legend -->
     <div class="card">
-      <div class="card-hd"><div><div class="card-title">Content System — One Filming Day, All Platforms</div><div class="card-sub">Film once per week with a trainer. That session generates all content for the week.</div></div></div>
+      <div class="card-hd"><div><div class="card-title">Content System — One Session, All Platforms</div><div class="card-sub">The Marketing Manager plans, coordinates, and measures. The team executes on the ground.</div></div></div>
       <div class="g3" style="margin-bottom:0">
         <div style="padding:14px;background:rgba(10,132,255,.07);border:1px solid rgba(10,132,255,.2);border-radius:10px">
-          <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px">Step 1 — Film</div>
-          <div style="font-size:11px;color:var(--t2);line-height:1.6">One 1-hour session with a trainer and a real client. Capture raw footage of the training process, the dog's behavior, and the trainer explaining what they're doing.</div>
+          <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px">Step 1 — Plan & Brief</div>
+          <div style="font-size:11px;color:var(--t2);line-height:1.6">Define the week's content theme, format, and hook. Brief the trainer on what to demonstrate. One 1-hour session with a real client generates all raw material.</div>
         </div>
         <div style="padding:14px;background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.2);border-radius:10px">
-          <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:6px">Step 2 — Cut</div>
-          <div style="font-size:11px;color:var(--t2);line-height:1.6">From that footage: 3 Reels (30–45 sec each) + screenshots for 2 Carousels. Total editing time: 90 minutes. One filming session = the full week of content.</div>
+          <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:6px">Step 2 — Produce</div>
+          <div style="font-size:11px;color:var(--t2);line-height:1.6">Coordinate post-production: one session yields 3 Reels + 2 Carousels. Review, approve, and caption every piece before it goes live.</div>
         </div>
         <div style="padding:14px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:10px">
-          <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px">Step 3 — Distribute</div>
-          <div style="font-size:11px;color:var(--t2);line-height:1.6">Same Reel → Instagram → TikTok → YouTube Short. Same content, 3x the reach, zero extra production time. Carousels go to Instagram + Facebook.</div>
+          <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px">Step 3 — Publish & Measure</div>
+          <div style="font-size:11px;color:var(--t2);line-height:1.6">Schedule across Instagram, TikTok, and YouTube Shorts. Track reach, saves, and profile visits. Adjust next week's brief based on what performed best.</div>
         </div>
       </div>
     </div>
@@ -913,16 +914,31 @@ svg.icon{display:inline-block;vertical-align:middle}
   <!-- ══ VIEW: TEAM ══ -->
   <div class="view" id="view-team">
     <div class="sec-hd"><div class="sec-hd-label">The Team — 7 Experts</div><div class="sec-hd-line"></div></div>
-    <div style="margin-bottom:14px;padding:14px 16px;background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.2);border-radius:10px;font-size:12px;color:var(--t2);line-height:1.6">
-      <strong style="color:var(--gold)">Humanization strategy:</strong> People hire people, not companies. Before inviting a trainer into their home, clients want to feel like they already know them. Each trainer on camera at least once a month — real faces drive the highest engagement and the most trust.
-    </div>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar" style="background:linear-gradient(135deg,#1A2B4A,#0A84FF)">J</div>
-        <div class="team-name">Jon</div>
-        <div class="team-role">Owner & Head Trainer</div>
-        <div class="team-badge" style="background:rgba(201,169,110,.15);color:var(--gold)">40+ yrs exp</div>
+
+    <!-- Jon — Featured founder card -->
+    <div style="margin-bottom:20px;padding:22px 28px;background:linear-gradient(135deg,rgba(201,169,110,.1),rgba(10,132,255,.06));border:1px solid rgba(201,169,110,.3);border-radius:16px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1A2B4A,#0A84FF);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#fff;flex-shrink:0;border:2px solid rgba(201,169,110,.4)">J</div>
+      <div style="flex:1;min-width:200px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+          <div style="font-size:20px;font-weight:900;color:var(--t1)">Jon</div>
+          <div style="font-size:10px;padding:3px 10px;background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.3);border-radius:20px;color:var(--gold);font-weight:700">Founder & Head Trainer</div>
+          <div style="font-size:10px;padding:3px 10px;background:rgba(10,132,255,.1);border:1px solid rgba(10,132,255,.25);border-radius:20px;color:var(--blue);font-weight:700">40+ years experience</div>
+        </div>
+        <div style="font-size:12px;color:var(--t2);line-height:1.6">The face and authority behind Dog Training Elite LA. Jon's story, expertise, and values are the foundation of the brand — every piece of content should reflect the credibility he represents.</div>
       </div>
+      <div style="display:flex;gap:10px;flex-shrink:0">
+        <div style="text-align:center;padding:10px 14px;background:rgba(201,169,110,.08);border-radius:10px;border:1px solid rgba(201,169,110,.2)"><div style="font-size:18px;font-weight:900;color:var(--gold)">40+</div><div style="font-size:10px;color:var(--t3)">Yrs training</div></div>
+        <div style="text-align:center;padding:10px 14px;background:rgba(16,185,129,.06);border-radius:10px;border:1px solid rgba(16,185,129,.2)"><div style="font-size:18px;font-weight:900;color:var(--green)">5.0★</div><div style="font-size:10px;color:var(--t3)">Google rating</div></div>
+      </div>
+    </div>
+
+    <!-- Content strategy note -->
+    <div style="margin-bottom:16px;padding:12px 16px;background:rgba(201,169,110,.06);border:1px solid rgba(201,169,110,.18);border-radius:10px;font-size:12px;color:var(--t2);line-height:1.6">
+      <strong style="color:var(--gold)">Content strategy:</strong> People hire people, not companies. Each trainer appears on camera at least once a month — real faces build the trust that gets a stranger to invite you into their home.
+    </div>
+
+    <!-- Rest of team -->
+    <div class="team-grid">
       <div class="team-card">
         <div class="team-avatar" style="background:linear-gradient(135deg,#065F46,#10B981)">D</div>
         <div class="team-name">Dominique</div>
@@ -1069,40 +1085,30 @@ svg.icon{display:inline-block;vertical-align:middle}
           <div style="margin-left:auto;padding:5px 12px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:20px;font-size:10px;font-weight:700;color:var(--green)">BUILT & READY</div>
         </div>
 
-        <!-- What is n8n -->
-        <div style="margin-bottom:16px;padding:16px;background:rgba(0,0,0,.2);border-radius:10px">
-          <div style="font-size:11px;font-weight:700;color:#FF6400;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">What is n8n?</div>
-          <div style="font-size:12px;color:var(--t2);line-height:1.8">n8n is a visual automation tool — you connect blocks instead of writing code. Set the rules once: when a lead comes in, save it, send an email, wait 2 days, send another. The system runs on its own, 24/7, with zero manual work. Every lead gets the same perfect follow-up, every time.</div>
-        </div>
-
-        <!-- Flow diagram -->
-        <div style="margin-bottom:6px">
-          <div style="font-size:11px;font-weight:700;color:var(--t2);margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px">How it works — step by step</div>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:26px;height:26px;border-radius:50%;background:rgba(10,132,255,.2);border:1px solid rgba(10,132,255,.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--blue);flex-shrink:0">1</div>
-              <div style="padding:10px 14px;background:rgba(10,132,255,.08);border:1px solid rgba(10,132,255,.2);border-radius:8px;flex:1;font-size:11px;color:var(--t1);font-weight:500">Someone fills the contact form on the website or clicks on a Meta Ad</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,100,0,.2);border:1px solid rgba(255,100,0,.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#FF6400;flex-shrink:0">2</div>
-              <div style="padding:10px 14px;background:rgba(255,100,0,.07);border:1px solid rgba(255,100,0,.2);border-radius:8px;flex:1;font-size:11px;color:var(--t1);font-weight:500">n8n detects it instantly — no delay, no manual check needed</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:26px;height:26px;border-radius:50%;background:rgba(139,92,246,.2);border:1px solid rgba(139,92,246,.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--purple);flex-shrink:0">3</div>
-              <div style="padding:10px 14px;background:rgba(139,92,246,.07);border:1px solid rgba(139,92,246,.2);border-radius:8px;flex:1;font-size:11px;color:var(--t1);font-weight:500">Saves the lead to Notion CRM with name, email, and source automatically</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:26px;height:26px;border-radius:50%;background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--green);flex-shrink:0">4</div>
-              <div style="padding:10px 14px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:8px;flex:1;font-size:11px;color:var(--t1);font-weight:500">Sends Email 1 immediately from Dog Training Elite's own Gmail — looks personal, not automated</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:26px;height:26px;border-radius:50%;background:rgba(201,169,110,.2);border:1px solid rgba(201,169,110,.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--gold);flex-shrink:0">5</div>
-              <div style="padding:10px 14px;background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.2);border-radius:8px;flex:1;font-size:11px;color:var(--t1);font-weight:500">Waits 2 days → sends Email 2 → waits 3 more days → sends Email 3 → routes to the right sequence based on behavior</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:26px;height:26px;border-radius:50%;background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--green);flex-shrink:0">✓</div>
-              <div style="padding:10px 14px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:8px;flex:1;font-size:11px;color:var(--green);font-weight:600">Zero manual work. Every lead gets a perfect follow-up. The system works while the team sleeps.</div>
-            </div>
+        <!-- Flow diagram — compact -->
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div style="flex:1;min-width:140px;padding:12px 14px;background:rgba(10,132,255,.08);border:1px solid rgba(10,132,255,.2);border-radius:8px;text-align:center">
+            <div style="font-size:18px;font-weight:900;color:var(--blue);margin-bottom:4px">1</div>
+            <div style="font-size:11px;font-weight:600;color:var(--t1);margin-bottom:2px">Lead fills form</div>
+            <div style="font-size:10px;color:var(--t3)">Website or Meta Ad</div>
+          </div>
+          <div style="display:flex;align-items:center;font-size:16px;color:var(--t3)">→</div>
+          <div style="flex:1;min-width:140px;padding:12px 14px;background:rgba(255,100,0,.07);border:1px solid rgba(255,100,0,.2);border-radius:8px;text-align:center">
+            <div style="font-size:18px;font-weight:900;color:#FF6400;margin-bottom:4px">2</div>
+            <div style="font-size:11px;font-weight:600;color:var(--t1);margin-bottom:2px">n8n detects it</div>
+            <div style="font-size:10px;color:var(--t3)">Instantly, automatically</div>
+          </div>
+          <div style="display:flex;align-items:center;font-size:16px;color:var(--t3)">→</div>
+          <div style="flex:1;min-width:140px;padding:12px 14px;background:rgba(139,92,246,.07);border:1px solid rgba(139,92,246,.2);border-radius:8px;text-align:center">
+            <div style="font-size:18px;font-weight:900;color:var(--purple);margin-bottom:4px">3</div>
+            <div style="font-size:11px;font-weight:600;color:var(--t1);margin-bottom:2px">Saved to CRM</div>
+            <div style="font-size:10px;color:var(--t3)">Notion — name, email, source</div>
+          </div>
+          <div style="display:flex;align-items:center;font-size:16px;color:var(--t3)">→</div>
+          <div style="flex:1;min-width:140px;padding:12px 14px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);border-radius:8px;text-align:center">
+            <div style="font-size:18px;font-weight:900;color:var(--green);margin-bottom:4px">4</div>
+            <div style="font-size:11px;font-weight:600;color:var(--t1);margin-bottom:2px">Sequence starts</div>
+            <div style="font-size:10px;color:var(--t3)">Emails send automatically</div>
           </div>
         </div>
       </div>
