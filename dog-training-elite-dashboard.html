@@ -488,27 +488,6 @@ svg.icon{display:inline-block;vertical-align:middle}
       </div>
     </div>
 
-    <!-- Revenue Opportunity -->
-    <div style="margin-bottom:18px;padding:20px 24px;background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(16,185,129,.05));border:1px solid rgba(201,169,110,.25);border-radius:14px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
-      <div style="flex:1;min-width:200px">
-        <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Revenue Opportunity — Year 1</div>
-        <div style="font-size:13px;color:var(--t2);line-height:1.6">55 leads/mo × 28% close rate × $800 avg = <strong style="color:var(--t1)">$12,300+/month</strong> by Month 12. Currently: <strong style="color:var(--gold)">$0</strong>.</div>
-      </div>
-      <div style="display:flex;gap:16px;flex-shrink:0">
-        <div style="text-align:center;padding:14px 18px;background:rgba(201,169,110,.1);border-radius:10px;border:1px solid rgba(201,169,110,.2)">
-          <div style="font-size:24px;font-weight:900;color:var(--gold)">$100k+</div>
-          <div style="font-size:10px;color:var(--t3);margin-top:2px">Year 1 revenue potential</div>
-        </div>
-        <div style="text-align:center;padding:14px 18px;background:rgba(16,185,129,.08);border-radius:10px;border:1px solid rgba(16,185,129,.2)">
-          <div style="font-size:24px;font-weight:900;color:var(--green)">55+</div>
-          <div style="font-size:10px;color:var(--t3);margin-top:2px">Leads/mo by Month 12</div>
-        </div>
-        <div style="text-align:center;padding:14px 18px;background:rgba(10,132,255,.08);border-radius:10px;border:1px solid rgba(10,132,255,.2)">
-          <div style="font-size:24px;font-weight:900;color:var(--blue)">$13–18</div>
-          <div style="font-size:10px;color:var(--t3);margin-top:2px">CPL goal by Month 12</div>
-        </div>
-      </div>
-    </div>
 
     <!-- Current state + Content pillars -->
     <div class="g21">
@@ -597,13 +576,16 @@ svg.icon{display:inline-block;vertical-align:middle}
     </div>
 
     <!-- Growth chart preview -->
-    <div class="sec-hd"><div class="sec-hd-label">12-Month Projection</div><div class="sec-hd-line"></div></div>
+    <div class="sec-hd"><div class="sec-hd-label">Growth Direction — Year 1</div><div class="sec-hd-line"></div></div>
     <div class="card" style="margin-bottom:18px">
       <div class="card-hd">
-        <div><div class="card-title">Instagram Follower Growth — 12-Month Roadmap</div><div class="card-sub">Organic foundation (Mo 1–2) → Paid acceleration (Mo 3+) → Full scale (Mo 7+)</div></div>
-        <button class="action-btn blue" onclick="showView('analytics',document.querySelector('[onclick*=analytics]'))">Full Analytics →</button>
+        <div><div class="card-title">Instagram Follower Growth — Directional Model</div><div class="card-sub">Phase 1: Build organic content · Phase 2: Launch paid ads · Phase 3: Scale what works</div></div>
+        <button class="action-btn blue" onclick="showView('analytics',document.querySelector('[onclick*=analytics]'))">Full View →</button>
       </div>
       <div class="chart-box" style="height:210px"><canvas id="overviewGrowthChart"></canvas></div>
+      <div style="margin-top:10px;padding:8px 12px;background:rgba(255,255,255,.02);border-radius:8px;font-size:10px;color:var(--t3);line-height:1.6">
+        These are directional projections based on industry benchmarks for local service businesses in LA. Actual numbers will be tracked weekly and adjusted. The goal is to build the right systems to get as close to this curve as possible.
+      </div>
     </div>
 
   </div><!-- /overview -->
@@ -872,18 +854,21 @@ svg.icon{display:inline-block;vertical-align:middle}
 
   <!-- ══ VIEW: ANALYTICS ══ -->
   <div class="view" id="view-analytics">
-    <div class="sec-hd"><div class="sec-hd-label">12-Month Growth Plan</div><div class="sec-hd-line"></div></div>
+    <div class="sec-hd"><div class="sec-hd-label">Growth Direction — Year 1</div><div class="sec-hd-line"></div></div>
+    <div style="margin-bottom:14px;padding:10px 14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;font-size:11px;color:var(--t3)">
+      These charts show the direction we're building toward — not guaranteed numbers. We track real results weekly and adjust the strategy accordingly.
+    </div>
     <div class="card" style="margin-bottom:16px">
-      <div class="card-hd"><div><div class="card-title">Instagram Follower Growth — Year 1</div><div class="card-sub">From 90 to 4,200+ followers: organic foundation then paid acceleration from Month 3</div></div></div>
+      <div class="card-hd"><div><div class="card-title">Follower Growth</div><div class="card-sub">Organic first → paid acceleration from Month 3</div></div></div>
       <div class="chart-box" style="height:240px"><canvas id="growthChart6mo"></canvas></div>
     </div>
     <div class="g2">
       <div class="card">
-        <div class="card-hd"><div><div class="card-title">Monthly Lead Volume — Year 1</div><div class="card-sub">DMs + form fills + calls from social · 0 → 55+ leads/month</div></div></div>
+        <div class="card-hd"><div><div class="card-title">Monthly Leads</div><div class="card-sub">DMs, form fills, and calls from social</div></div></div>
         <div class="chart-box" style="height:200px"><canvas id="leadsChart"></canvas></div>
       </div>
       <div class="card">
-        <div class="card-hd"><div><div class="card-title">Content Volume per Month</div><div class="card-sub">Reels vs Carousels vs Stories</div></div></div>
+        <div class="card-hd"><div><div class="card-title">Content Published per Month</div><div class="card-sub">Reels · Carousels · Stories</div></div></div>
         <div class="chart-box" style="height:200px"><canvas id="contentChart"></canvas></div>
       </div>
     </div>
@@ -891,22 +876,22 @@ svg.icon{display:inline-block;vertical-align:middle}
       <div style="background:rgba(10,132,255,.08);border:1px solid rgba(10,132,255,.2);border-radius:12px;padding:16px;text-align:center">
         <div style="font-size:10px;color:var(--blue);font-weight:700;margin-bottom:6px">MONTH 1–2</div>
         <div style="font-size:20px;font-weight:900;color:var(--blue);margin-bottom:4px">$0</div>
-        <div style="font-size:10px;color:var(--t2)">Content foundation · organic only · build audience + content library</div>
+        <div style="font-size:10px;color:var(--t2)">Content only. Build the foundation.</div>
       </div>
       <div style="background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:12px;padding:16px;text-align:center">
         <div style="font-size:10px;color:var(--purple);font-weight:700;margin-bottom:6px">MONTH 3–4</div>
-        <div style="font-size:20px;font-weight:900;color:var(--purple);margin-bottom:4px">$400–600</div>
-        <div style="font-size:10px;color:var(--t2)">First Meta Ads · learning phase · CPL $45–55 (expected, improves fast)</div>
+        <div style="font-size:20px;font-weight:900;color:var(--purple);margin-bottom:4px">~$500/mo</div>
+        <div style="font-size:10px;color:var(--t2)">First ads. Learning phase.</div>
       </div>
       <div style="background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);border-radius:12px;padding:16px;text-align:center">
         <div style="font-size:10px;color:var(--gold);font-weight:700;margin-bottom:6px">MONTH 5–8</div>
-        <div style="font-size:20px;font-weight:900;color:var(--gold);margin-bottom:4px">$700–1k</div>
-        <div style="font-size:10px;color:var(--t2)">Full funnel active · retargeting · CPL drops to $20–32 · 28–42 leads/mo</div>
+        <div style="font-size:20px;font-weight:900;color:var(--gold);margin-bottom:4px">~$800/mo</div>
+        <div style="font-size:10px;color:var(--t2)">Full funnel. Optimize costs.</div>
       </div>
       <div style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:12px;padding:16px;text-align:center">
         <div style="font-size:10px;color:var(--green);font-weight:700;margin-bottom:6px">MONTH 9–12</div>
-        <div style="font-size:20px;font-weight:900;color:var(--green);margin-bottom:4px">$1k–1.5k</div>
-        <div style="font-size:10px;color:var(--t2)">Scale proven campaigns · lookalike audiences · CPL $13–18 · 50+ leads/mo</div>
+        <div style="font-size:20px;font-weight:900;color:var(--green);margin-bottom:4px">~$1.2k/mo</div>
+        <div style="font-size:10px;color:var(--t2)">Scale what's working.</div>
       </div>
     </div>
   </div><!-- /analytics -->
@@ -1021,7 +1006,7 @@ svg.icon{display:inline-block;vertical-align:middle}
   <div class="view" id="view-metrics">
     <div class="sec-hd"><div class="sec-hd-label">KPI Tracking Matrix</div><div class="sec-hd-line"></div></div>
     <div class="card">
-      <div class="card-hd"><div><div class="card-title">Performance Metrics — 12-Month Growth Targets</div><div class="card-sub">Baseline → quarterly checkpoints → Year 1 goals</div></div></div>
+      <div class="card-hd"><div><div class="card-title">What We're Tracking — Month by Month</div><div class="card-sub">Where we start · where we want to be · updated as real data comes in</div></div></div>
       <table class="mtable">
         <thead>
           <tr>
@@ -1031,14 +1016,14 @@ svg.icon{display:inline-block;vertical-align:middle}
         <tbody>
           <tr><td><span class="m-name">Followers</span></td><td>Instagram</td><td><span class="m-bad">90</span></td><td>500</td><td>1,350</td><td>2,700</td><td><span class="m-good">4,200+</span></td><td><span class="prio ph">HIGH</span></td></tr>
           <tr><td><span class="m-name">Posts/Week</span></td><td>All platforms</td><td><span class="m-bad">~0</span></td><td>7</td><td>7</td><td>7</td><td><span class="m-good">7+</span></td><td><span class="prio ph">HIGH</span></td></tr>
-          <tr><td><span class="m-name">Reel Watch Time</span></td><td>Instagram</td><td><span class="m-bad">Unknown</span></td><td>&gt;45%</td><td>&gt;55%</td><td>&gt;60%</td><td><span class="m-good">&gt;65%</span></td><td><span class="prio ph">HIGH</span></td></tr>
-          <tr><td><span class="m-name">Save Rate</span></td><td>Instagram</td><td><span class="m-bad">Unknown</span></td><td>1.5%</td><td>3%</td><td>4%</td><td><span class="m-good">5%+</span></td><td><span class="prio ph">HIGH</span></td></tr>
+          <tr><td><span class="m-name">Video Completion %</span></td><td>Instagram</td><td><span class="m-bad">Unknown</span></td><td>&gt;45%</td><td>&gt;55%</td><td>&gt;60%</td><td><span class="m-good">&gt;65%</span></td><td><span class="prio ph">HIGH</span></td></tr>
+          <tr><td><span class="m-name">Saves per Post</span></td><td>Instagram</td><td><span class="m-bad">Unknown</span></td><td>1.5%</td><td>3%</td><td>4%</td><td><span class="m-good">5%+</span></td><td><span class="prio ph">HIGH</span></td></tr>
           <tr><td><span class="m-name">Leads / Inquiries</span></td><td>IG + Facebook</td><td><span class="m-bad">~0</span></td><td>10/mo</td><td>28/mo</td><td>42/mo</td><td><span class="m-good">55+/mo</span></td><td><span class="prio ph">HIGH</span></td></tr>
           <tr><td><span class="m-name">Active Meta Ads</span></td><td>Facebook/IG</td><td><span class="m-bad">0</span></td><td>1–2</td><td>3</td><td>4</td><td><span class="m-good">4–5</span></td><td><span class="prio ph">HIGH</span></td></tr>
           <tr><td><span class="m-name">Cost per Lead (CPL)</span></td><td>Meta Ads</td><td><span class="m-bad">N/A</span></td><td>$45–55</td><td>$25–32</td><td>$18–24</td><td><span class="m-good">$13–18</span></td><td><span class="prio ph">HIGH</span></td></tr>
           <tr><td><span class="m-name">TikTok Followers</span></td><td>TikTok</td><td><span class="m-bad">0</span></td><td>120</td><td>500</td><td>1,200</td><td><span class="m-good">2,500+</span></td><td><span class="prio pm2">MED</span></td></tr>
           <tr><td><span class="m-name">YouTube Shorts</span></td><td>YouTube</td><td><span class="m-bad">0</span></td><td>12</td><td>28</td><td>44</td><td><span class="m-good">52+</span></td><td><span class="prio pm2">MED</span></td></tr>
-          <tr><td><span class="m-name">Bio Link Clicks</span></td><td>Instagram</td><td><span class="m-bad">~0</span></td><td>35/mo</td><td>100/mo</td><td>160/mo</td><td><span class="m-good">220+/mo</span></td><td><span class="prio pm2">MED</span></td></tr>
+          <tr><td><span class="m-name">Website Visits from IG</span></td><td>Instagram</td><td><span class="m-bad">~0</span></td><td>35/mo</td><td>100/mo</td><td>160/mo</td><td><span class="m-good">220+/mo</span></td><td><span class="prio pm2">MED</span></td></tr>
           <tr><td><span class="m-name">Google Reviews</span></td><td>Google</td><td><span class="m-good">100+</span></td><td>112</td><td>126</td><td>140</td><td><span class="m-good">155+</span></td><td><span class="prio pm2">MED</span></td></tr>
         </tbody>
       </table>
@@ -1114,150 +1099,82 @@ svg.icon{display:inline-block;vertical-align:middle}
       </div>
     </div>
 
-    <!-- 4 Sequences -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px">
+    <!-- 4 Sequences — visual flow -->
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px">
 
       <!-- Sequence 1 -->
-      <div class="card">
-        <div class="card-hd">
-          <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:32px;height:32px;border-radius:8px;background:rgba(10,132,255,.15);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:var(--blue)">1</div>
-            <div><div class="card-title">New Lead — Nurture Sequence</div><div class="card-sub">Trigger: fills contact form or Meta Ads lead form</div></div>
+      <div class="card" style="padding:16px 20px">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <div style="width:28px;height:28px;border-radius:7px;background:rgba(10,132,255,.15);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--blue);flex-shrink:0">1</div>
+          <div style="min-width:160px;flex-shrink:0">
+            <div style="font-size:12px;font-weight:700;color:var(--t1)">New Lead</div>
+            <div style="font-size:10px;color:var(--t3)">Fills form or clicks ad</div>
           </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="padding:12px;background:rgba(10,132,255,.06);border-left:3px solid var(--blue);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--blue)">Email 1 — Immediate</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">Day 0</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "Your dog's transformation starts here 🐾"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">Hi [Name], thanks for reaching out! We train dogs in your home, on your schedule. Our trainers have 40+ years of experience and we back every session with a satisfaction guarantee. Here's what to expect next...</div>
+          <div style="display:flex;align-items:center;gap:6px;flex:1;flex-wrap:wrap">
+            <div style="padding:6px 12px;background:rgba(10,132,255,.1);border-radius:6px;font-size:11px;color:var(--blue);font-weight:600;white-space:nowrap">Welcome email</div>
+            <span style="color:var(--t3)">→</span>
+            <div style="padding:6px 12px;background:rgba(139,92,246,.1);border-radius:6px;font-size:11px;color:var(--purple);font-weight:600;white-space:nowrap">Social proof</div>
+            <span style="color:var(--t3)">→</span>
+            <div style="padding:6px 12px;background:rgba(16,185,129,.1);border-radius:6px;font-size:11px;color:var(--green);font-weight:600;white-space:nowrap">Book now</div>
           </div>
-          <div style="padding:12px;background:rgba(139,92,246,.06);border-left:3px solid var(--purple);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--purple)">Email 2 — Social Proof</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">Day 2</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "What 100+ LA families are saying about us"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">We've trained dogs across 15+ LA cities. Here are a few stories from families just like yours — dogs that pulled on leashes, showed aggression, or had severe anxiety — now completely transformed.</div>
-          </div>
-          <div style="padding:12px;background:rgba(16,185,129,.06);border-left:3px solid var(--green);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--green)">Email 3 — CTA</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">Day 5</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "Still thinking about it? Here's our guarantee."</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">If we don't deliver the results we promised, we keep working — for free. That's how confident we are. Ready to book your first session? [Book Now →]</div>
-          </div>
+          <div style="font-size:11px;color:var(--t3);flex-shrink:0">Goal: first session booked</div>
         </div>
       </div>
 
       <!-- Sequence 2 -->
-      <div class="card">
-        <div class="card-hd">
-          <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:32px;height:32px;border-radius:8px;background:rgba(201,169,110,.15);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:var(--gold)">2</div>
-            <div><div class="card-title">Post-Consultation — Didn't Book</div><div class="card-sub">Trigger: had a call but didn't schedule a session</div></div>
+      <div class="card" style="padding:16px 20px">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <div style="width:28px;height:28px;border-radius:7px;background:rgba(201,169,110,.15);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--gold);flex-shrink:0">2</div>
+          <div style="min-width:160px;flex-shrink:0">
+            <div style="font-size:12px;font-weight:700;color:var(--t1)">Had a call, didn't book</div>
+            <div style="font-size:10px;color:var(--t3)">Spoke with us, no appointment</div>
           </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="padding:12px;background:rgba(201,169,110,.06);border-left:3px solid var(--gold);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--gold)">Email 1 — Soft Follow-Up</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">Day 1</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "Great talking with you, [Name]"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">It was great learning about [dog's name]! No pressure at all — I just wanted to leave the door open. If you have any questions before deciding, I'm here.</div>
+          <div style="display:flex;align-items:center;gap:6px;flex:1;flex-wrap:wrap">
+            <div style="padding:6px 12px;background:rgba(201,169,110,.1);border-radius:6px;font-size:11px;color:var(--gold);font-weight:600;white-space:nowrap">Soft follow-up</div>
+            <span style="color:var(--t3)">→</span>
+            <div style="padding:6px 12px;background:rgba(245,158,11,.1);border-radius:6px;font-size:11px;color:var(--yellow);font-weight:600;white-space:nowrap">Answer doubts</div>
+            <span style="color:var(--t3)">→</span>
+            <div style="padding:6px 12px;background:rgba(239,68,68,.1);border-radius:6px;font-size:11px;color:var(--red);font-weight:600;white-space:nowrap">Last chance</div>
           </div>
-          <div style="padding:12px;background:rgba(245,158,11,.06);border-left:3px solid var(--yellow);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--yellow)">Email 2 — Objection Handling</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">Day 4</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "The most common question we get (and our answer)"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">"Does it actually work long-term?" Yes — because we train you and your dog together. The results stick because your whole family learns the system. Here's a before/after from a recent client...</div>
-          </div>
-          <div style="padding:12px;background:rgba(239,68,68,.06);border-left:3px solid var(--red);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--red)">Email 3 — Last Touch</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">Day 10</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "Closing your file — but one last thing"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">I don't want to keep filling your inbox. This is my last email — but if anything changes or your dog's behavior gets harder to manage, we're always here. [Book When Ready →]</div>
-          </div>
+          <div style="font-size:11px;color:var(--t3);flex-shrink:0">Goal: recover the lead</div>
         </div>
       </div>
 
       <!-- Sequence 3 -->
-      <div class="card">
-        <div class="card-hd">
-          <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:32px;height:32px;border-radius:8px;background:rgba(16,185,129,.15);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:var(--green)">3</div>
-            <div><div class="card-title">Active Client — Onboarding & Retention</div><div class="card-sub">Trigger: books and pays for first session</div></div>
+      <div class="card" style="padding:16px 20px">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <div style="width:28px;height:28px;border-radius:7px;background:rgba(16,185,129,.15);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--green);flex-shrink:0">3</div>
+          <div style="min-width:160px;flex-shrink:0">
+            <div style="font-size:12px;font-weight:700;color:var(--t1)">Active client</div>
+            <div style="font-size:10px;color:var(--t3)">Paid and started sessions</div>
           </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="padding:12px;background:rgba(16,185,129,.06);border-left:3px solid var(--green);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--green)">Email 1 — Welcome</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">Immediate</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "Welcome to Dog Training Elite — what's next"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">You made a great decision for you and your dog. Here's everything you need to know before your first session, what to prepare, and how to get the most out of your training.</div>
+          <div style="display:flex;align-items:center;gap:6px;flex:1;flex-wrap:wrap">
+            <div style="padding:6px 12px;background:rgba(16,185,129,.1);border-radius:6px;font-size:11px;color:var(--green);font-weight:600;white-space:nowrap">Welcome</div>
+            <span style="color:var(--t3)">→</span>
+            <div style="padding:6px 12px;background:rgba(16,185,129,.1);border-radius:6px;font-size:11px;color:var(--green);font-weight:600;white-space:nowrap">Ask for review</div>
+            <span style="color:var(--t3)">→</span>
+            <div style="padding:6px 12px;background:rgba(16,185,129,.1);border-radius:6px;font-size:11px;color:var(--green);font-weight:600;white-space:nowrap">Ask for referral</div>
           </div>
-          <div style="padding:12px;background:rgba(16,185,129,.06);border-left:3px solid var(--green);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--green)">Email 2 — Review Request</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">After session 3</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "How is [dog's name] doing?"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">We'd love to hear about your progress! If you're happy with results so far, a quick Google review helps other LA families find us — and takes just 60 seconds. [Leave a Review →]</div>
-          </div>
-          <div style="padding:12px;background:rgba(16,185,129,.06);border-left:3px solid var(--green);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--green)">Email 3 — Referral Ask</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">After program ends</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "Know anyone with a dog that needs help?"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">If you know a friend, neighbor, or family member with a dog struggling with behavior — we'd love to help them too. Share this with them and they'll receive a special welcome. [Share →]</div>
-          </div>
+          <div style="font-size:11px;color:var(--t3);flex-shrink:0">Goal: review + word of mouth</div>
         </div>
       </div>
 
       <!-- Sequence 4 -->
-      <div class="card">
-        <div class="card-hd">
-          <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:32px;height:32px;border-radius:8px;background:rgba(139,92,246,.15);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:var(--purple)">4</div>
-            <div><div class="card-title">Cold Leads — Re-Engagement</div><div class="card-sub">Trigger: no activity for 30+ days after initial inquiry</div></div>
+      <div class="card" style="padding:16px 20px">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <div style="width:28px;height:28px;border-radius:7px;background:rgba(139,92,246,.15);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--purple);flex-shrink:0">4</div>
+          <div style="min-width:160px;flex-shrink:0">
+            <div style="font-size:12px;font-weight:700;color:var(--t1)">Gone cold</div>
+            <div style="font-size:10px;color:var(--t3)">No reply in 30+ days</div>
           </div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="padding:12px;background:rgba(139,92,246,.06);border-left:3px solid var(--purple);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--purple)">Email 1 — Check In</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">Day 30</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "Still struggling with [dog's behavior]?"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">It's been a while since we talked. Behavior issues rarely fix themselves — and the longer they go, the harder they get. We're still here if you're ready. No pressure.</div>
+          <div style="display:flex;align-items:center;gap:6px;flex:1;flex-wrap:wrap">
+            <div style="padding:6px 12px;background:rgba(139,92,246,.1);border-radius:6px;font-size:11px;color:var(--purple);font-weight:600;white-space:nowrap">Check in</div>
+            <span style="color:var(--t3)">→</span>
+            <div style="padding:6px 12px;background:rgba(139,92,246,.1);border-radius:6px;font-size:11px;color:var(--purple);font-weight:600;white-space:nowrap">Free tips</div>
+            <span style="color:var(--t3)">→</span>
+            <div style="padding:6px 12px;background:rgba(139,92,246,.1);border-radius:6px;font-size:11px;color:var(--purple);font-weight:600;white-space:nowrap">Final invite</div>
           </div>
-          <div style="padding:12px;background:rgba(139,92,246,.06);border-left:3px solid var(--purple);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--purple)">Email 2 — Value Drop</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">Day 37</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "Free guide: 3 things you can do TODAY with your dog"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">No pitch — just value. Here are 3 techniques our trainers use in every first session that you can try at home right now. If they work, imagine what a full program does.</div>
-          </div>
-          <div style="padding:12px;background:rgba(139,92,246,.06);border-left:3px solid var(--purple);border-radius:0 8px 8px 0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-              <div style="font-size:11px;font-weight:700;color:var(--purple)">Email 3 — Final CTA</div>
-              <span style="font-size:10px;color:var(--t3);background:rgba(255,255,255,.05);padding:2px 7px;border-radius:5px">Day 45</span>
-            </div>
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">Subject: "Last one from us — promise"</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.5">We won't keep reaching out if it's not the right time. But if you ever want to talk about what's going on with your dog — we're a message away. [Book a Free Call →]</div>
-          </div>
+          <div style="font-size:11px;color:var(--t3);flex-shrink:0">Goal: re-engage or close</div>
         </div>
       </div>
 
