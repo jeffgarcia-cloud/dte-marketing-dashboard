@@ -424,7 +424,6 @@ svg.icon{display:inline-block;vertical-align:middle}
       </div>
       <div class="banner-stats">
         <div class="banner-stat"><div class="bs-val" style="color:var(--blue)">Day 1</div><div class="bs-lbl">Starting Point</div></div>
-        <div class="banner-stat"><div class="bs-val" style="color:var(--gold)">$100k+</div><div class="bs-lbl">Yr 1 Opportunity</div></div>
         <div class="banner-stat"><div class="bs-val" style="color:var(--gold)">5.0★</div><div class="bs-lbl">Google Rating</div></div>
         <div class="banner-stat"><div class="bs-val" style="color:var(--green)">100+</div><div class="bs-lbl">Reviews</div></div>
       </div>
@@ -1370,169 +1369,78 @@ svg.icon{display:inline-block;vertical-align:middle}
     </div>
 
     <!-- 7 day grid -->
-    <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+
+      <!-- Column headers -->
+      <div style="display:grid;grid-template-columns:90px 80px 110px 1fr 130px;gap:12px;padding:0 16px 4px;align-items:center">
+        <div style="font-size:9px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px">Day</div>
+        <div style="font-size:9px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px">Format</div>
+        <div style="font-size:9px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px">Pillar</div>
+        <div style="font-size:9px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px">Hook</div>
+        <div style="font-size:9px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px">Platform</div>
+      </div>
 
       <!-- MONDAY -->
-      <div class="card" style="border-left:3px solid var(--blue)">
-        <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
-          <div style="min-width:90px;flex-shrink:0">
-            <div style="font-size:13px;font-weight:900;color:var(--t1)">Monday</div>
-            <div style="font-size:10px;color:var(--blue);font-weight:700;margin-top:3px">REEL</div>
-            <div style="font-size:9px;padding:3px 8px;background:rgba(10,132,255,.12);border:1px solid rgba(10,132,255,.25);border-radius:5px;color:var(--blue);font-weight:700;margin-top:5px;display:inline-block">Transformation</div>
-          </div>
-          <div style="flex:1;min-width:200px;border-left:1px solid var(--border);padding-left:16px">
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Hook (first 3 seconds)</div>
-            <div style="font-size:13px;font-weight:800;color:var(--t1);margin-bottom:10px">"This dog attacked another dog 3 months ago. Watch what happened."</div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Reel structure</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;margin-bottom:10px">
-              <span style="color:var(--blue);font-weight:700">0–3s:</span> Hook + clip of dog reacting aggressively (before) ·
-              <span style="color:var(--blue);font-weight:700">4–10s:</span> Quick context — "This is Max. His owner almost gave him up." ·
-              <span style="color:var(--blue);font-weight:700">11–25s:</span> Training clips — show key moments ·
-              <span style="color:var(--blue);font-weight:700">26–35s:</span> After clip — Max calm, off-leash, with other dogs ·
-              <span style="color:var(--blue);font-weight:700">36–45s:</span> Owner reaction + CTA
-            </div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Caption</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;padding:10px 12px;background:rgba(255,255,255,.03);border-radius:8px;border:1px solid var(--border)">Max was 2 seconds away from being surrendered to a shelter. His owner had tried everything — trainers, videos, guides. Nothing worked.<br><br>We came to their home in Los Angeles and worked with Max and his owner together. 8 weeks later, this is Max.<br><br>Every dog has a story. Every dog can change. 🐾<br><br>📍 We train in your home — Los Angeles &amp; 15+ surrounding cities<br>📞 Free evaluation in the link in bio<br><br>#DogTraining #LosAngeles #BeforeAndAfter #DogBehavior #AggressionTraining #LADogs</div>
-          </div>
-        </div>
+      <div style="display:grid;grid-template-columns:90px 80px 110px 1fr 130px;gap:12px;padding:14px 16px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:10px;align-items:center">
+        <div style="font-size:13px;font-weight:800;color:var(--t1)">Monday</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(10,132,255,.12);border:1px solid rgba(10,132,255,.25);border-radius:5px;color:var(--blue);text-align:center">REEL</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(10,132,255,.08);border:1px solid rgba(10,132,255,.2);border-radius:5px;color:var(--blue);text-align:center">Transformation</div>
+        <div style="font-size:12px;color:var(--t2);font-style:italic">"This dog attacked another dog 3 months ago. Watch what happened."</div>
+        <div style="font-size:10px;color:var(--t3)">Instagram · TikTok</div>
       </div>
 
       <!-- TUESDAY -->
-      <div class="card" style="border-left:3px solid var(--gold)">
-        <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
-          <div style="min-width:90px;flex-shrink:0">
-            <div style="font-size:13px;font-weight:900;color:var(--t1)">Tuesday</div>
-            <div style="font-size:10px;color:var(--gold);font-weight:700;margin-top:3px">CAROUSEL</div>
-            <div style="font-size:9px;padding:3px 8px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.25);border-radius:5px;color:var(--gold);font-weight:700;margin-top:5px;display:inline-block">Education</div>
-          </div>
-          <div style="flex:1;min-width:200px;border-left:1px solid var(--border);padding-left:16px">
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Hook (slide 1)</div>
-            <div style="font-size:13px;font-weight:800;color:var(--t1);margin-bottom:10px">"5 things your dog does that mean they're anxious (most owners miss #3)"</div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Slide structure</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;margin-bottom:10px">
-              <span style="color:var(--gold);font-weight:700">Slide 1:</span> Hook title · <span style="color:var(--gold);font-weight:700">Slide 2:</span> Sign #1 — Excessive yawning (not tired, stressed) · <span style="color:var(--gold);font-weight:700">Slide 3:</span> Sign #2 — Tail between legs · <span style="color:var(--gold);font-weight:700">Slide 4:</span> Sign #3 — Lip licking with no food around · <span style="color:var(--gold);font-weight:700">Slide 5:</span> Sign #4 — Whale eye (showing whites) · <span style="color:var(--gold);font-weight:700">Slide 6:</span> Sign #5 — Constant panting indoors · <span style="color:var(--gold);font-weight:700">Slide 7:</span> "If your dog does 2 or more of these, DM us" + CTA
-            </div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Caption</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;padding:10px 12px;background:rgba(255,255,255,.03);border-radius:8px;border:1px solid var(--border)">Most dog anxiety goes unnoticed until it becomes a behavior problem. These 5 signs show up long before any aggression or destruction starts — save this post and check your dog tonight. 🐕<br><br>If your dog shows 2 or more, drop a 🐾 in the comments and we'll tell you what to do next.<br><br>#DogAnxiety #DogBehavior #PetTips #LosAngelesDogs #DogTrainingTips #KnowYourDog</div>
-          </div>
-        </div>
+      <div style="display:grid;grid-template-columns:90px 80px 110px 1fr 130px;gap:12px;padding:14px 16px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;align-items:center">
+        <div style="font-size:13px;font-weight:800;color:var(--t1)">Tuesday</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.25);border-radius:5px;color:var(--gold);text-align:center">CAROUSEL</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);border-radius:5px;color:var(--gold);text-align:center">Education</div>
+        <div style="font-size:12px;color:var(--t2);font-style:italic">"5 things your dog does that mean they're anxious (most owners miss #3)"</div>
+        <div style="font-size:10px;color:var(--t3)">Instagram · Facebook</div>
       </div>
 
       <!-- WEDNESDAY -->
-      <div class="card" style="border-left:3px solid var(--green)">
-        <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
-          <div style="min-width:90px;flex-shrink:0">
-            <div style="font-size:13px;font-weight:900;color:var(--t1)">Wednesday</div>
-            <div style="font-size:10px;color:var(--green);font-weight:700;margin-top:3px">REEL</div>
-            <div style="font-size:9px;padding:3px 8px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:5px;color:var(--green);font-weight:700;margin-top:5px;display:inline-block">Humanization</div>
-          </div>
-          <div style="flex:1;min-width:200px;border-left:1px solid var(--border);padding-left:16px">
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Hook (first 3 seconds)</div>
-            <div style="font-size:13px;font-weight:800;color:var(--t1);margin-bottom:10px">"Meet Dominique — the trainer every aggressive dog needs to meet."</div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Reel structure</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;margin-bottom:10px">
-              <span style="color:var(--green);font-weight:700">0–3s:</span> Hook over clip of Dominique working with a dog ·
-              <span style="color:var(--green);font-weight:700">4–12s:</span> Dominique talks to camera — why she became a trainer, one sentence ·
-              <span style="color:var(--green);font-weight:700">13–25s:</span> B-roll of her working with clients, in-home session ·
-              <span style="color:var(--green);font-weight:700">26–35s:</span> Client testimonial about Dominique specifically ·
-              <span style="color:var(--green);font-weight:700">36–40s:</span> "Book with Dominique — link in bio"
-            </div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Caption</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;padding:10px 12px;background:rgba(255,255,255,.03);border-radius:8px;border:1px solid var(--border)">You're not just hiring a trainer. You're inviting someone into your home, to work with your dog and your family. That's personal.<br><br>Meet Dominique — behavior specialist and the most mentioned trainer in our 5-star reviews. She's been transforming dogs across Los Angeles for years, one home at a time. 🏠🐾<br><br>This is the team behind the results.<br><br>#MeetTheTeam #DogTrainerLA #DogBehaviorSpecialist #LosAngelesDogTrainer #InHomeDogTraining</div>
-          </div>
-        </div>
+      <div style="display:grid;grid-template-columns:90px 80px 110px 1fr 130px;gap:12px;padding:14px 16px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:10px;align-items:center">
+        <div style="font-size:13px;font-weight:800;color:var(--t1)">Wednesday</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:5px;color:var(--green);text-align:center">REEL</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:5px;color:var(--green);text-align:center">Humanization</div>
+        <div style="font-size:12px;color:var(--t2);font-style:italic">"Meet Dominique — the trainer every aggressive dog needs to meet."</div>
+        <div style="font-size:10px;color:var(--t3)">Instagram · TikTok</div>
       </div>
 
       <!-- THURSDAY -->
-      <div class="card" style="border-left:3px solid var(--gold)">
-        <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
-          <div style="min-width:90px;flex-shrink:0">
-            <div style="font-size:13px;font-weight:900;color:var(--t1)">Thursday</div>
-            <div style="font-size:10px;color:var(--gold);font-weight:700;margin-top:3px">CAROUSEL</div>
-            <div style="font-size:9px;padding:3px 8px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.25);border-radius:5px;color:var(--gold);font-weight:700;margin-top:5px;display:inline-block">Education</div>
-          </div>
-          <div style="flex:1;min-width:200px;border-left:1px solid var(--border);padding-left:16px">
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Hook (slide 1)</div>
-            <div style="font-size:13px;font-weight:800;color:var(--t1);margin-bottom:10px">"3 things everyone believes about dog training that are completely wrong"</div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Slide structure</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;margin-bottom:10px">
-              <span style="color:var(--gold);font-weight:700">Slide 1:</span> Hook · <span style="color:var(--gold);font-weight:700">Slide 2:</span> Myth — "Old dogs can't learn" → Reality: age is not a limit · <span style="color:var(--gold);font-weight:700">Slide 3:</span> Myth — "Aggressive dogs are dangerous forever" → Reality: most respond to proper training · <span style="color:var(--gold);font-weight:700">Slide 4:</span> Myth — "You need to be strict and dominant" → Reality: relationship-based training works better · <span style="color:var(--gold);font-weight:700">Slide 5:</span> "Which myth surprised you most?" + CTA to comment
-            </div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Caption</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;padding:10px 12px;background:rgba(255,255,255,.03);border-radius:8px;border:1px solid var(--border)">The internet is full of dog training advice. Some of it is holding your dog back. Save this and share it with someone who needs to hear myth #2. 👇<br><br>Which one surprised you most? Tell us in the comments — we read every single one.<br><br>#DogTrainingMyths #DogFacts #DogOwner #LosAngelesPets #DogTraining101 #PetEducation</div>
-          </div>
-        </div>
+      <div style="display:grid;grid-template-columns:90px 80px 110px 1fr 130px;gap:12px;padding:14px 16px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;align-items:center">
+        <div style="font-size:13px;font-weight:800;color:var(--t1)">Thursday</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.25);border-radius:5px;color:var(--gold);text-align:center">CAROUSEL</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);border-radius:5px;color:var(--gold);text-align:center">Education</div>
+        <div style="font-size:12px;color:var(--t2);font-style:italic">"3 things everyone believes about dog training that are completely wrong"</div>
+        <div style="font-size:10px;color:var(--t3)">Instagram · Facebook</div>
       </div>
 
       <!-- FRIDAY -->
-      <div class="card" style="border-left:3px solid var(--blue)">
-        <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
-          <div style="min-width:90px;flex-shrink:0">
-            <div style="font-size:13px;font-weight:900;color:var(--t1)">Friday</div>
-            <div style="font-size:10px;color:var(--blue);font-weight:700;margin-top:3px">REEL</div>
-            <div style="font-size:9px;padding:3px 8px;background:rgba(10,132,255,.12);border:1px solid rgba(10,132,255,.25);border-radius:5px;color:var(--blue);font-weight:700;margin-top:5px;display:inline-block">Transformation</div>
-          </div>
-          <div style="flex:1;min-width:200px;border-left:1px solid var(--border);padding-left:16px">
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Hook (first 3 seconds)</div>
-            <div style="font-size:13px;font-weight:800;color:var(--t1);margin-bottom:10px">"She cried when she saw her dog sit for the first time in 3 years."</div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Reel structure</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;margin-bottom:10px">
-              <span style="color:var(--blue);font-weight:700">0–3s:</span> Hook over emotional clip of owner's reaction ·
-              <span style="color:var(--blue);font-weight:700">4–15s:</span> Owner tells the story in their own words (30 second clip cut to key moments) ·
-              <span style="color:var(--blue);font-weight:700">16–28s:</span> Show the specific training moment that changed things ·
-              <span style="color:var(--blue);font-weight:700">29–38s:</span> Dog now — calm, responsive, happy ·
-              <span style="color:var(--blue);font-weight:700">39–45s:</span> "Your dog's story starts here — link in bio"
-            </div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Caption</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;padding:10px 12px;background:rgba(255,255,255,.03);border-radius:8px;border:1px solid var(--border)">Sarah had given up. 3 years of pulling, jumping, ignoring every command. She called us as a last resort.<br><br>We came to her home in Santa Monica. Week 1 was hard. Week 3, something clicked. Week 6 — you see it in the video.<br><br>Every dog deserves a chance. Every owner deserves peace. 🤍<br><br>📍 In-home training across Los Angeles<br>🔗 Free evaluation — link in bio<br><br>#DogTransformation #ClientStory #InHomeDogTraining #SantaMonica #DogTrainingLA #BeforeAndAfter</div>
-          </div>
-        </div>
+      <div style="display:grid;grid-template-columns:90px 80px 110px 1fr 130px;gap:12px;padding:14px 16px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:10px;align-items:center">
+        <div style="font-size:13px;font-weight:800;color:var(--t1)">Friday</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(10,132,255,.12);border:1px solid rgba(10,132,255,.25);border-radius:5px;color:var(--blue);text-align:center">REEL</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(10,132,255,.08);border:1px solid rgba(10,132,255,.2);border-radius:5px;color:var(--blue);text-align:center">Transformation</div>
+        <div style="font-size:12px;color:var(--t2);font-style:italic">"She cried when she saw her dog sit for the first time in 3 years."</div>
+        <div style="font-size:10px;color:var(--t3)">Instagram · TikTok</div>
       </div>
 
       <!-- SATURDAY -->
-      <div class="card" style="border-left:3px solid var(--purple)">
-        <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
-          <div style="min-width:90px;flex-shrink:0">
-            <div style="font-size:13px;font-weight:900;color:var(--t1)">Saturday</div>
-            <div style="font-size:10px;color:var(--purple);font-weight:700;margin-top:3px">CAROUSEL</div>
-            <div style="font-size:9px;padding:3px 8px;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);border-radius:5px;color:var(--purple);font-weight:700;margin-top:5px;display:inline-block">Community</div>
-          </div>
-          <div style="flex:1;min-width:200px;border-left:1px solid var(--border);padding-left:16px">
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Hook (slide 1)</div>
-            <div style="font-size:13px;font-weight:800;color:var(--t1);margin-bottom:10px">"What's your dog's #1 behavior problem? (we'll answer every single one)"</div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Slide structure</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;margin-bottom:10px">
-              <span style="color:var(--purple);font-weight:700">Slide 1:</span> Question hook — "Tell us your dog's problem" · <span style="color:var(--purple);font-weight:700">Slide 2:</span> "Is it pulling on the leash?" · <span style="color:var(--purple);font-weight:700">Slide 3:</span> "Is it barking at everything?" · <span style="color:var(--purple);font-weight:700">Slide 4:</span> "Is it aggression with other dogs?" · <span style="color:var(--purple);font-weight:700">Slide 5:</span> "Is it separation anxiety?" · <span style="color:var(--purple);font-weight:700">Slide 6:</span> "Whatever it is — we've seen it. Drop it in the comments. We answer every one."
-            </div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Caption</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;padding:10px 12px;background:rgba(255,255,255,.03);border-radius:8px;border:1px solid var(--border)">Saturday question time. 🐶<br><br>We're dog trainers with 40+ years of experience. We've worked with thousands of dogs across Los Angeles. And we're pretty sure we've seen your dog's problem before.<br><br>Drop your dog's #1 behavior challenge in the comments — we'll reply to every single one with a tip you can try today.<br><br>#DogProblems #AskATrainer #LosAngelesDogs #DogBehavior #DogCommunity #DogTrainerLA</div>
-          </div>
-        </div>
+      <div style="display:grid;grid-template-columns:90px 80px 110px 1fr 130px;gap:12px;padding:14px 16px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-left:3px solid var(--purple);border-radius:10px;align-items:center">
+        <div style="font-size:13px;font-weight:800;color:var(--t1)">Saturday</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);border-radius:5px;color:var(--purple);text-align:center">CAROUSEL</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:5px;color:var(--purple);text-align:center">Community</div>
+        <div style="font-size:12px;color:var(--t2);font-style:italic">"What's your dog's #1 behavior problem? (we'll answer every single one)"</div>
+        <div style="font-size:10px;color:var(--t3)">Instagram · Facebook</div>
       </div>
 
       <!-- SUNDAY -->
-      <div class="card" style="border-left:3px solid var(--gold)">
-        <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
-          <div style="min-width:90px;flex-shrink:0">
-            <div style="font-size:13px;font-weight:900;color:var(--t1)">Sunday</div>
-            <div style="font-size:10px;color:var(--gold);font-weight:700;margin-top:3px">REEL</div>
-            <div style="font-size:9px;padding:3px 8px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.25);border-radius:5px;color:var(--gold);font-weight:700;margin-top:5px;display:inline-block">Education</div>
-          </div>
-          <div style="flex:1;min-width:200px;border-left:1px solid var(--border);padding-left:16px">
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Hook (first 3 seconds)</div>
-            <div style="font-size:13px;font-weight:800;color:var(--t1);margin-bottom:10px">"Stop saying NO to your dog. Do this instead."</div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Reel structure</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;margin-bottom:10px">
-              <span style="color:var(--gold);font-weight:700">0–3s:</span> Hook — trainer to camera, direct ·
-              <span style="color:var(--gold);font-weight:700">4–10s:</span> "When you say NO, your dog hears sound. Not instruction." ·
-              <span style="color:var(--gold);font-weight:700">11–25s:</span> Demo — dog jumping, owner says NO, dog confused → trainer redirects, dog sits, gets rewarded ·
-              <span style="color:var(--gold);font-weight:700">26–35s:</span> "Instead of NO, tell them what TO DO. Replace the behavior." ·
-              <span style="color:var(--gold);font-weight:700">36–42s:</span> "Save this. Try it today. Link in bio if you need us."
-            </div>
-            <div style="font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Caption</div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.7;padding:10px 12px;background:rgba(255,255,255,.03);border-radius:8px;border:1px solid var(--border)">The most common mistake dog owners make — and it's not their fault. Nobody teaches you this. 🐾<br><br>"No" tells your dog what to stop. It doesn't tell them what to start. Give them a job instead and watch what changes.<br><br>Save this and tag an owner who needs it. 👇<br><br>#DogTrainingTip #DogOwnerTips #SundayTraining #LADogs #DogBehavior #TrainYourDog #DogTrainingLA</div>
-          </div>
-        </div>
+      <div style="display:grid;grid-template-columns:90px 80px 110px 1fr 130px;gap:12px;padding:14px 16px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;align-items:center">
+        <div style="font-size:13px;font-weight:800;color:var(--t1)">Sunday</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.25);border-radius:5px;color:var(--gold);text-align:center">REEL</div>
+        <div style="font-size:10px;font-weight:700;padding:4px 9px;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);border-radius:5px;color:var(--gold);text-align:center">Education</div>
+        <div style="font-size:12px;color:var(--t2);font-style:italic">"Stop saying NO to your dog. Do this instead."</div>
+        <div style="font-size:10px;color:var(--t3)">Instagram · TikTok · YouTube</div>
       </div>
 
     </div>
