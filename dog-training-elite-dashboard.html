@@ -582,10 +582,12 @@ svg.icon{display:inline-block;vertical-align:middle}
         <div><div class="card-title">Instagram Follower Growth — Directional Model</div><div class="card-sub">Phase 1: Build organic content · Phase 2: Launch paid ads · Phase 3: Scale what works</div></div>
         <button class="action-btn blue" onclick="showView('analytics',document.querySelector('[onclick*=analytics]'))">Full View →</button>
       </div>
-      <div class="chart-box" style="height:210px"><canvas id="overviewGrowthChart"></canvas></div>
-      <div style="margin-top:10px;padding:8px 12px;background:rgba(255,255,255,.02);border-radius:8px;font-size:10px;color:var(--t3);line-height:1.6">
-        These are directional projections based on industry benchmarks for local service businesses in LA. Actual numbers will be tracked weekly and adjusted. The goal is to build the right systems to get as close to this curve as possible.
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;padding:8px 12px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:8px">
+        <div style="width:7px;height:7px;border-radius:50%;background:var(--yellow);flex-shrink:0"></div>
+        <div style="font-size:10px;color:var(--yellow);font-weight:700;letter-spacing:.3px">VISUAL PROJECTION</div>
+        <div style="font-size:10px;color:var(--t3);line-height:1.5">This chart is illustrative only — based on industry benchmarks for local service businesses in LA. Once onboarded, real numbers replace these projections week by week.</div>
       </div>
+      <div class="chart-box" style="height:210px"><canvas id="overviewGrowthChart"></canvas></div>
     </div>
 
   </div><!-- /overview -->
@@ -855,20 +857,35 @@ svg.icon{display:inline-block;vertical-align:middle}
   <!-- ══ VIEW: ANALYTICS ══ -->
   <div class="view" id="view-analytics">
     <div class="sec-hd"><div class="sec-hd-label">Growth Direction — Year 1</div><div class="sec-hd-line"></div></div>
-    <div style="margin-bottom:14px;padding:10px 14px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;font-size:11px;color:var(--t3)">
-      These charts show the direction we're building toward — not guaranteed numbers. We track real results weekly and adjust the strategy accordingly.
+    <!-- Disclaimer banner -->
+    <div style="margin-bottom:18px;padding:16px 20px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.25);border-radius:12px;display:flex;gap:14px;align-items:flex-start">
+      <div style="font-size:20px;flex-shrink:0;line-height:1">📊</div>
+      <div>
+        <div style="font-size:12px;font-weight:800;color:var(--yellow);margin-bottom:4px">These charts are visual projections — not live data.</div>
+        <div style="font-size:11px;color:var(--t2);line-height:1.7">Built from industry benchmarks for local service businesses in LA. They show <strong style="color:var(--t1)">where we're headed</strong>, not where we are today. Once onboarded and connected to Dog Training Elite's real accounts, these charts will be updated progressively every week — replacing projections with actual performance as it happens.</div>
+      </div>
     </div>
+
     <div class="card" style="margin-bottom:16px">
-      <div class="card-hd"><div><div class="card-title">Follower Growth</div><div class="card-sub">Organic first → paid acceleration from Month 3</div></div></div>
+      <div class="card-hd">
+        <div><div class="card-title">Follower Growth</div><div class="card-sub">Organic first → paid acceleration from Month 3</div></div>
+        <span style="font-size:9px;padding:3px 9px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);border-radius:6px;color:var(--yellow);font-weight:700;white-space:nowrap">PROJECTION · updates with real data</span>
+      </div>
       <div class="chart-box" style="height:240px"><canvas id="growthChart6mo"></canvas></div>
     </div>
     <div class="g2">
       <div class="card">
-        <div class="card-hd"><div><div class="card-title">Monthly Leads</div><div class="card-sub">DMs, form fills, and calls from social</div></div></div>
+        <div class="card-hd">
+          <div><div class="card-title">Monthly Leads</div><div class="card-sub">DMs, form fills, and calls from social</div></div>
+          <span style="font-size:9px;padding:3px 9px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);border-radius:6px;color:var(--yellow);font-weight:700;white-space:nowrap">PROJECTION</span>
+        </div>
         <div class="chart-box" style="height:200px"><canvas id="leadsChart"></canvas></div>
       </div>
       <div class="card">
-        <div class="card-hd"><div><div class="card-title">Content Published per Month</div><div class="card-sub">Reels · Carousels · Stories</div></div></div>
+        <div class="card-hd">
+          <div><div class="card-title">Content Published per Month</div><div class="card-sub">Reels · Carousels · Stories</div></div>
+          <span style="font-size:9px;padding:3px 9px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);border-radius:6px;color:var(--yellow);font-weight:700;white-space:nowrap">PROJECTION</span>
+        </div>
         <div class="chart-box" style="height:200px"><canvas id="contentChart"></canvas></div>
       </div>
     </div>
@@ -1017,8 +1034,15 @@ svg.icon{display:inline-block;vertical-align:middle}
   <!-- ══ VIEW: METRICS ══ -->
   <div class="view" id="view-metrics">
     <div class="sec-hd"><div class="sec-hd-label">KPI Tracking Matrix</div><div class="sec-hd-line"></div></div>
+    <div style="margin-bottom:14px;padding:14px 18px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:10px;display:flex;gap:12px;align-items:center">
+      <div style="font-size:16px;flex-shrink:0">📋</div>
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--yellow);margin-bottom:3px">Baseline is real. Targets are directional.</div>
+        <div style="font-size:10px;color:var(--t3);line-height:1.6">Month 3–12 columns show benchmark goals based on comparable LA service businesses. They will be updated with Dog Training Elite's actual numbers as we track and measure week over week.</div>
+      </div>
+    </div>
     <div class="card">
-      <div class="card-hd"><div><div class="card-title">What We're Tracking — Month by Month</div><div class="card-sub">Where we start · where we want to be · updated as real data comes in</div></div></div>
+      <div class="card-hd"><div><div class="card-title">What We're Tracking — Month by Month</div><div class="card-sub">Baseline = real · Month 3–12 = directional targets · updates as data comes in</div></div></div>
       <table class="mtable">
         <thead>
           <tr>
